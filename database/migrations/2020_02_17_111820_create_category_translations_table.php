@@ -15,7 +15,11 @@ class CreateCategoryTranslationsTable extends Migration
     {
         Schema::create('category_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->integer('category_id')->unsigned()->onDelete('cascade');
+            $table->string('name');
+            $table->string('locale')->index();
+
+            $table->unique(['category_id', 'locale']);
         });
     }
 
