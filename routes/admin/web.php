@@ -1,12 +1,21 @@
 <?php
 
 Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ],
+    ['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
     function () {
-        Route::group(['prefix' => 'admin'], function () {
-            Route::get('/index', 'AdminController@index')->name('admin.index');
+        Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+            Route::get('/', 'WelcomeController@index')->name('welcome');
+
+            Route::resource('categories', 'CategoryController')->except(['show']);
+            Route::resource('products', 'ProductController')->except(['show']);
+
+            Route::resource('clients', 'ClientController')->except(['show']);
+            Route::resource('clients.orders', 'Client\OrderController')->except(['show']);
+
+            Route::resource('orders', 'OrderController');
+            Route::get('/orders/{order}/products', 'OrderController@products')->name('orders.products');
+
+            Route::resource('users', 'UserController')->except(['show']);
         });
     }
 );
