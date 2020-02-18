@@ -50,12 +50,11 @@
         <form class="login-form" action="{{route('login')}}" method="POST">
             @csrf
             @method('post')
-            @include('partials._errors')
-
             <h3 class="form-title font-green">@lang('site.login')</h3>
+            @include('partials._errors')
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
-                {{-- <span> Enter any username and password. </span> --}}
+                <span> Enter your username and password. </span>
             </div>
             <div class="form-group">
                 <input id="email" type="email" class="form-control" name="email" required
