@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'dashboard'                 => 'Home',
+    'home'                      => 'Home',
     'logout'                    => 'Logout',
 
     'add'                       => 'Add',
@@ -69,13 +69,15 @@ return [
     'stock'                     => 'Stock',
     'profit_percent'            => 'Profit Percent',
 
+    'all_rights'                => 'All Rights are Saved',
+
     'ar'                        => [
-        'name' => 'Arabic name',
-        'description' => 'Arabic description',
+        'name'          => 'Arabic Name',
+        'description'   => 'Arabic Description',
     ],
     'en'                        => [
-        'name' => 'English name',
-        'description' => 'English description',
+        'name'          => 'English Name',
+        'description'   => 'English Description',
     ],
 
 ];

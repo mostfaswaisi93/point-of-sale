@@ -87,6 +87,11 @@
     width: auto !important;
 }
 
+.page-header.navbar .page-logo>a {
+    padding-left: 65px;
+    float: none;
+}
+
 .login .content .form-actions {
     border-bottom: none;
     padding: 0 30px;

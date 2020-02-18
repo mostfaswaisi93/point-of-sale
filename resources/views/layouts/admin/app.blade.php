@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 
 <head>
     <meta charset="utf-8" />
@@ -37,26 +37,26 @@
     <link rel="stylesheet" href="{{asset('/css/styles-rtl.css')}}">
 
     @else
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/bootstrap/css/bootstrap.min.css"
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/bootstrap/css/bootstrap.min.css') }}"
         rel="stylesheet" />
     <link
-        href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+        href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}"
         rel="stylesheet" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/css/components-md.min.css" rel="stylesheet"
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/css/components-md.min.css') }}" rel="stylesheet"
         id="style_components" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/css/plugins-md.min.css" rel="stylesheet" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/layout.min.css" rel="stylesheet" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/themes/darkblue.min.css"
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/css/plugins-md.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-ltr/assets/layouts/layout/css/layout.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-ltr/assets/layouts/layout/css/themes/darkblue.min.css') }}"
         rel="stylesheet" id="style_color" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/custom.min.css" rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-ltr/assets/layouts/layout/css/custom.min.css') }}" rel="stylesheet" />
     <link
-        href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
+        href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}"
         rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
     @endif
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
 
 </head>
 
@@ -104,20 +104,21 @@
                                 <i class="fa fa-language" aria-hidden="true"></i>
                                 <i class="fa fa-angle-down"></i>
                             </a>
-                            {{-- <ul class="dropdown-menu dropdown-menu-default">
-                                @if (direction() == 'ltr')
+
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode =>
+                                $properties)
                                 <li>
-                                    <a href="/admin/lang/ar"> <i class="fa fa-globe" aria-hidden="true"></i>
-                                        {{ trans('site.arabic') }}</a>
+                                    <a rel="alternate" hreflang="{{ $localeCode }}"
+                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        <i class="fa fa-globe"></i>
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                                @endforeach
+
+                            </ul>
                         </li>
-                        @else
-                        <li>
-                            <a href="/admin/lang/en"> <i class="fa fa-globe" aria-hidden="true"></i>
-                                {{ trans('site.english') }} </a>
-                        </li>
-                        @endif
-                    </ul> --}}
-                    </li>
                     </ul>
                 </div>
             </div>
@@ -137,45 +138,38 @@
             </div>
         </div>
 
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/jquery.min.js') }}"
-            type="text/javascript">
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/jquery.min.js') }}">
         </script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}"
-            type="text/javascript"></script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/js.cookie.min.js') }}"
-            type="text/javascript">
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}">
+        </script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/js.cookie.min.js') }}">
         </script>
         <script
-            src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"
-            type="text/javascript"></script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/jquery.blockui.min.js') }}"
-            type="text/javascript">
+            src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}">
+        </script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/jquery.blockui.min.js') }}">
         </script>
         <script
-            src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"
-            type="text/javascript"></script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/scripts/datatable.js') }}"
-            type="text/javascript">
+            src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}">
         </script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/datatables/datatables.min.js') }}"
-            type="text/javascript"></script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/scripts/datatable.js') }}">
+        </script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/datatables/datatables.min.js') }}">
+        </script>
         <script
-            src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"
-            type="text/javascript"></script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/scripts/app.min.js') }}" type="text/javascript">
+            src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}">
         </script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/pages/scripts/table-datatables-editable.min.js') }}"
-            type="text/javascript"></script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/layout/scripts/layout.min.js') }}"
-            type="text/javascript">
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/scripts/app.min.js') }}">
         </script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/layout/scripts/demo.min.js') }}"
-            type="text/javascript">
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/pages/scripts/table-datatables-editable.min.js') }}">
         </script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/global/scripts/quick-sidebar.min.js') }}"
-            type="text/javascript"></script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/global/scripts/quick-nav.min.js') }}"
-            type="text/javascript">
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/layout/scripts/layout.min.js') }}">
+        </script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/layout/scripts/demo.min.js') }}">
+        </script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/global/scripts/quick-sidebar.min.js') }}">
+        </script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/global/scripts/quick-nav.min.js') }}">
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
@@ -186,7 +180,6 @@
 
         <script>
             CKEDITOR.config.language =  "{{ app()->getLocale() }}";
-
         </script>
 
 </body>

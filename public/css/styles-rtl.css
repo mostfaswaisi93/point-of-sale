@@ -1,3 +1,10 @@
+.page-logo a {
+    text-decoration: none;
+    margin: 5px;
+    color: #fff;
+    font-size: 24px;
+}
+
 .page-sidebar .page-sidebar-menu {
     direction: rtl;
 }
@@ -44,6 +51,10 @@
 }
 
 .page-header.navbar .page-logo>a {
-    padding-left: 65px;
+    padding-right: 65px;
     float: none;
+}
+
+.login .content {
+    direction: rtl;
 }

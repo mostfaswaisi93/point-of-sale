@@ -22,6 +22,8 @@
         id="style_components" />
     <link href="{{ asset('admin_files/metronic-rtl/assets/global/css/plugins-md-rtl.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin_files/metronic-rtl/assets/pages/css/login-rtl.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('/css/styles-rtl.css')}}">
+
     @else
     <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/bootstrap/css/bootstrap.min.css') }}"
         rel="stylesheet" />
@@ -32,13 +34,11 @@
         id="style_components" />
     <link href="{{ asset('admin_files/metronic-ltr/assets/global/css/plugins-md.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin_files/metronic-ltr/assets/pages/css/login.min.css') }}" rel="stylesheet" />
-
     @endif
 
     <link
         href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}"
         rel="stylesheet" />
-
     <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
 
 </head>
@@ -49,22 +49,26 @@
     <div class="content">
         <form class="login-form" action="{{route('login')}}" method="POST">
             @csrf
-            <h3 class="form-title font-green">Sign In</h3>
+            @method('post')
+            @include('partials._errors')
+
+            <h3 class="form-title font-green">@lang('site.login')</h3>
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
-                <span> Enter any username and password. </span>
+                {{-- <span> Enter any username and password. </span> --}}
             </div>
             <div class="form-group">
-                <input id="email" type="email" class="form-control" name="email" required placeholder="Email">
+                <input id="email" type="email" class="form-control" name="email" required
+                    placeholder="@lang('site.email')">
             </div>
             <div class="form-group">
                 <input id="password" type="password" class="form-control" name="password" required
-                    placeholder="Password">
+                    placeholder="@lang('site.password')">
             </div>
             <div class="form-actions">
-                <button type="submit" class="btn green uppercase">Login</button>
+                <button type="submit" class="btn green uppercase">@lang('site.login')</button>
                 <label class="rememberme check mt-checkbox mt-checkbox-outline">
-                    <input type="checkbox" name="rememberme"> Remember Me
+                    <input type="checkbox" name="rememberme">@lang('site.remember_me')
                     <span></span>
                 </label>
             </div>
