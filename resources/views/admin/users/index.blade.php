@@ -7,7 +7,7 @@
         <ul class="page-breadcrumb">
             <li>
                 <a href="/">@lang('site.home')</a>
-                <i class="fa fa-circle"></i>
+                <i class="fa fa-angle-left"></i>
             </li>
             <li>
                 <a href="/admin/users">@lang('site.users')</a>
@@ -29,10 +29,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="btn-group">
-                                    <button name="create_tag" id="create_tag"
-                                        class="btn green">@lang('site.add_new')
-                                        <i class="fa fa-plus"></i>
-                                    </button>
+                                    <div class="btn-group">
+                                        <button name="create_tag" id="create_tag" class="btn green"> <i
+                                                class="fa fa-plus"></i>@lang('site.add') @lang('site.user')
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

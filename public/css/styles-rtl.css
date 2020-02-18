@@ -9,6 +9,14 @@
     direction: rtl;
 }
 
+.page-sidebar .page-sidebar-menu>li:hover>a>i {
+    color: #e7505a !important;
+}
+
+.page-sidebar .page-sidebar-menu>li.active>a>i {
+    color: white !important;
+}
+
 .portlet.light.portlet-fit>.portlet-body {
     direction: rtl;
 }
@@ -57,4 +65,15 @@
 
 .login .content {
     direction: rtl;
+}
+
+.page-content-white.page-md .page-content .page-bar {
+    background-color: #f7f7f7;
+    margin: -10px;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+}
+
+.page-content-white .page-bar .page-breadcrumb>li>a {
+    font-size: 16px;
 }

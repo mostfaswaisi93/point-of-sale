@@ -96,3 +96,7 @@
     border-bottom: none;
     padding: 0 30px;
 }
+
+.page-bar {
+    background-color: #f7f7f7;
+}

@@ -8,37 +8,37 @@
                         <span></span>
                     </div>
                 </li>
-                <li class="{{ (request()->is('/*')) ? 'active' : '' }}">
+                <li {{ request()->route()->getName() === 'admin.welcome' ? ' class=active' : '' }}>
                     <a href="{{ route('admin.welcome') }}" class="nav-link">
                         <i class="fa fa-home font-green"></i>
                         <span class="title">@lang('site.home')</span>
                     </a>
                 </li>
-                <li class="{{ (request()->is('admin/categories*')) ? 'active' : '' }}">
+                <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
                     <a href="/admin/categories" class="nav-link">
                         <i class="fa fa-tags font-green"></i>
                         <span class="title">@lang('site.categories')</span>
                     </a>
                 </li>
-                <li class="{{ (request()->is('admin/products*')) ? 'active' : '' }}">
+                <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
                     <a href="/admin/products" class="nav-link">
                         <i class="fa fa-product-hunt font-green"></i>
                         <span class="title">@lang('site.products')</span>
                     </a>
                 </li>
-                <li class="{{ (request()->is('admin/clients*')) ? 'active' : '' }}">
+                <li {{ request()->route()->getName() === 'admin.clients.index' ? ' class=active' : '' }}>
                     <a href="/admin/clients" class="nav-link">
                         <i class="fa fa-users font-green"></i>
                         <span class="title">@lang('site.clients')</span>
                     </a>
                 </li>
-                <li class="{{ (request()->is('admin/orders*')) ? 'active' : '' }}">
+                <li {{ request()->route()->getName() === 'admin.orders.index' ? ' class=active' : '' }}>
                     <a href="/admin/orders" class="nav-link">
                         <i class="fa fa-shopping-cart font-green"></i>
                         <span class="title">@lang('site.orders')</span>
                     </a>
                 </li>
-                <li class="{{ (request()->is('ar/admin/users*')) ? 'active' : '' }}">
+                <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
                     <a href="{{ route('admin.users.index') }}" class="nav-link">
                         <i class="fa fa-user-circle-o font-green"></i>
                         <span class="title">@lang('site.users')</span>
