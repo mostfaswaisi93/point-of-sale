@@ -11,6 +11,7 @@ return [
     'update'                    => 'Update',
     'delete'                    => 'Delete',
     'search'                    => 'Search',
+    'reset'                     => 'Reset',
     'show'                      => 'Show',
     'loading'                   => 'Loading',
     'print'                     => 'Print',

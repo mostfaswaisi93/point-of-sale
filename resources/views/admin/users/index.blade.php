@@ -2,56 +2,115 @@
 
 @section('content')
 
-<div class="page-content-wrapper">
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li>
-                <a href="/">@lang('site.home')</a>
-                <i class="fa fa-angle-left"></i>
-            </li>
-            <li>
-                <a href="/admin/users">@lang('site.users')</a>
-                <i class="fa fa-circle"></i>
-            </li>
-        </ul>
-    </div>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/">@lang('site.home')</a>
+            <i class="fa fa-angle-left"></i>
+        </li>
+        <li>
+            <a href="/admin/users">@lang('site.users')</a>
+            <i class="fa fa-circle"></i>
+        </li>
+    </ul>
+</div>
+<div class="table-toolbar">
     <div class="row">
-        <div class="col-md-12">
-            <div class="portlet light portlet-fit bordered">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-users font-red"></i>
-                        <span class="caption-subject font-red sbold uppercase">@lang('site.users')</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="table-toolbar">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="btn-group">
-                                    <div class="btn-group">
-                                        <button name="create_tag" id="create_tag" class="btn green"> <i
-                                                class="fa fa-plus"></i>@lang('site.add') @lang('site.user')
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table table-striped table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> @lang('site.name') </th>
-                                <th width="15%"> @lang('site.action') </th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+        <form action="{{ route('admin.users.index') }}" method="get">
+            <div class="form-group col-md-4">
+                <br>
+                <input type="text" name="search" class="form-control" placeholder="@lang('site.search')"
+                    value="{{ request()->search }}">
+            </div>
+            <div class="col-md-1">
+                <br>
+                <button style="width: 100%" class="btn btn-info" type="submit">@lang('site.search')</button>
+            </div>
+            <div class="col-md-1">
+                <br>
+                <button style="width: 100%" type="reset" class="btn btn-danger">@lang('site.reset')</button>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="btn-group">
+                @if (auth()->user()->hasPermission('create_users'))
+                <a href="{{ route('admin.users.create') }}" class="btn sbold green"><i class="fa fa-plus"></i>
+                    @lang('site.add') @lang('site.user')</a>
+                @else
+                <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
+                    @lang('site.add') @lang('site.user')</a>
+                @endif
             </div>
         </div>
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-users"></i>@lang('site.users')</div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    @if ($users->count() > 0)
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>@lang('site.first_name')</th>
+                                <th>@lang('site.last_name')</th>
+                                <th>@lang('site.email')</th>
+                                <th>@lang('site.image')</th>
+                                <th>@lang('site.action')</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $index=>$user)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->last_name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td><img src="{{ $user->image_path }}" style="width: 100px;" class="img-thumbnail"
+                                        alt=""></td>
+                                <td>
+                                    @if (auth()->user()->hasPermission('update_users'))
+                                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-info btn-sm"><i
+                                            class="fa fa-edit"></i> @lang('site.edit')</a>
+                                    @else
+                                    <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i>
+                                        @lang('site.edit')</a>
+                                    @endif
+                                    @if (auth()->user()->hasPermission('delete_users'))
+                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="post"
+                                        style="display: inline-block">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger delete btn-sm"><i
+                                                class="fa fa-trash"></i> @lang('site.delete')</button>
+                                    </form>
+                                    @else
+                                    <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i>
+                                        @lang('site.delete')</button>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $users->appends(request()->query())->links() }}
+                    @else
+                    <h4>@lang('site.no_data_found')</h4>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

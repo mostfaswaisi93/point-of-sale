@@ -100,3 +100,14 @@
 .page-bar {
     background-color: #f7f7f7;
 }
+
+.page-content-white.page-md .page-content .page-bar {
+    background-color: #f7f7f7;
+    margin: -10px;
+    border-radius: 5px !important;
+    margin-bottom: 10px;
+}
+
+.page-content-white .page-bar .page-breadcrumb>li>a {
+    font-size: 16px;
+}

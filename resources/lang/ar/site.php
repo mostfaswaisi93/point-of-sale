@@ -11,6 +11,7 @@ return [
     'update'                    => 'تعديل',
     'delete'                    => 'حذف',
     'search'                    => 'بحث',
+    'reset'                     => 'تفريغ',
     'show'                      => 'عرض',
     'loading'                   => 'جاري التحميل',
     'print'                     => 'طباعة',
@@ -28,8 +29,8 @@ return [
     'updated_successfully'      => 'تم تعديل البيانات بنجاح',
     'deleted_successfully'      => 'تم حذف البيانات بنجاح',
 
-    'no_data_found'             => 'للأسف لا يوجد أي سجلات',
-    'no_records'                => 'للأسف لا يوجد أي سجلات',
+    'no_data_found'             => 'لا يوجد أي سجلات',
+    'no_records'                => 'لا يوجد أي سجلات',
 
     'clients'                   => 'العملاء',
     'client_name'               => 'اسم العميل',
@@ -71,7 +72,7 @@ return [
     'profit_percent'            => 'المكسب',
 
     'all_rights'                => 'جميع الحقوق محفوظة',
-    
+
     'ar'                        => [
         'name'          => 'الاسم باللغة العربية',
         'description'   => 'الوصف باللغة العربية',

@@ -38,12 +38,14 @@
                         <span class="title">@lang('site.orders')</span>
                     </a>
                 </li>
+                {{-- @if (auth()->user()->hasPermission('read_users')) --}}
                 <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
                     <a href="{{ route('admin.users.index') }}" class="nav-link">
                         <i class="fa fa-user-circle-o font-green"></i>
                         <span class="title">@lang('site.users')</span>
                     </a>
                 </li>
+                {{-- @endif --}}
             </ul>
         </div>
     </div>
