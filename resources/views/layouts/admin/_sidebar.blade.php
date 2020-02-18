@@ -11,13 +11,37 @@
                 <li class="{{ (request()->is('/*')) ? 'active' : '' }}">
                     <a href="/" class="nav-link">
                         <i class="fa fa-home font-green"></i>
-                        <span class="title">{{ trans('admin.home') }}</span>
+                        <span class="title">{{ trans('site.home') }}</span>
                     </a>
                 </li>
-                <li class="{{ (request()->is('admin/comments*')) ? 'active' : '' }}">
-                    <a href="/admin/comments" class="nav-link">
-                        <i class="fa fa-comments font-green"></i>
-                        <span class="title">{{ trans('admin.comments') }}</span>
+                <li class="{{ (request()->is('admin/categories*')) ? 'active' : '' }}">
+                    <a href="/admin/categories" class="nav-link">
+                        <i class="fa fa-tags font-green"></i>
+                        <span class="title">{{ trans('site.categories') }}</span>
+                    </a>
+                </li>
+                <li class="{{ (request()->is('admin/products*')) ? 'active' : '' }}">
+                    <a href="/admin/products" class="nav-link">
+                        <i class="fa fa-product-hunt font-green"></i>
+                        <span class="title">{{ trans('site.products') }}</span>
+                    </a>
+                </li>
+                <li class="{{ (request()->is('admin/clients*')) ? 'active' : '' }}">
+                    <a href="/admin/clients" class="nav-link">
+                        <i class="fa fa-tags font-green"></i>
+                        <span class="title">{{ trans('site.clients') }}</span>
+                    </a>
+                </li>
+                <li class="{{ (request()->is('admin/orders*')) ? 'active' : '' }}">
+                    <a href="/admin/orders" class="nav-link">
+                        <i class="fa fa-tags font-green"></i>
+                        <span class="title">{{ trans('site.orders') }}</span>
+                    </a>
+                </li>
+                <li class="{{ (request()->is('admin/users*')) ? 'active' : '' }}">
+                    <a href="/admin/users" class="nav-link">
+                        <i class="fa fa-tags font-green"></i>
+                        <span class="title">{{ trans('site.users') }}</span>
                     </a>
                 </li>
             </ul>

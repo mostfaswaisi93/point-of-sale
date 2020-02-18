@@ -7,68 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="author" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/font-awesome/css/font-awesome.min.css"
-        rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"
+        rel="stylesheet" />
     <link
-        href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
-        rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/datatables/datatables.min.css"
-        rel="stylesheet" type="text/css" />
+        href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/datatables/datatables.min.css') }}"
+        rel="stylesheet" />
+
     @if (app()->getLocale() == 'ar')
-
-    <link href="{{ asset('/') }}/admin_files/metronic-rtl/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css"
-        rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin_files/metronic-rtl/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css') }}"
+        rel="stylesheet" />
     <link
-        href="{{ asset('/') }}/admin_files/metronic-rtl/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css"
-        rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-rtl/assets/global/css/components-md-rtl.min.css" rel="stylesheet"
-        id="style_components" type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-rtl/assets/global/css/plugins-md-rtl.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-rtl/assets/layouts/layout/css/layout-rtl.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-rtl/assets/layouts/layout/css/themes/darkblue-rtl.min.css"
-        rel="stylesheet" type="text/css" id="style_color" />
-    <link href="{{ asset('/') }}/admin_files/metronic-rtl/assets/layouts/layout/css/custom-rtl.min.css" rel="stylesheet"
-        type="text/css" />
+        href="{{ asset('admin_files/metronic-rtl/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-rtl/assets/global/css/components-md-rtl.min.css') }}" rel="stylesheet"
+        id="style_components" />
+    <link href="{{ asset('admin_files/metronic-rtl/assets/global/css/plugins-md-rtl.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-rtl/assets/layouts/layout/css/layout-rtl.min.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-rtl/assets/layouts/layout/css/themes/darkblue-rtl.min.css') }}"
+        rel="stylesheet" id="style_color" />
+    <link href="{{ asset('admin_files/metronic-rtl/assets/layouts/layout/css/custom-rtl.min.css') }}"
+        rel="stylesheet" />
     <link
-        href="{{ asset('/') }}/admin_files/metronic-rtl/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css"
-        rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{asset('/css/styles-rtl.css')}}" type="text/css">
-
+        href="{{ asset('admin_files/metronic-rtl/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') }}"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('/css/styles-rtl.css')}}">
 
     @else
-
     <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/bootstrap/css/bootstrap.min.css"
-        rel="stylesheet" type="text/css" />
+        rel="stylesheet" />
     <link
         href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
-        rel="stylesheet" type="text/css" />
+        rel="stylesheet" />
     <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/css/components-md.min.css" rel="stylesheet"
-        id="style_components" type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/css/plugins-md.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/layout.min.css" rel="stylesheet"
-        type="text/css" />
+        id="style_components" />
+    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/css/plugins-md.min.css" rel="stylesheet" />
+    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/layout.min.css" rel="stylesheet" />
     <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/themes/darkblue.min.css"
-        rel="stylesheet" type="text/css" id="style_color" />
-    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/custom.min.css" rel="stylesheet"
-        type="text/css" />
+        rel="stylesheet" id="style_color" />
+    <link href="{{ asset('/') }}/admin_files/metronic-ltr/assets/layouts/layout/css/custom.min.css" rel="stylesheet" />
     <link
         href="{{ asset('/') }}/admin_files/metronic-ltr/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
-        rel="stylesheet" type="text/css" />
-
-
-
-
+        rel="stylesheet" />
     @endif
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
-    <link rel="stylesheet" href="{{asset('/css/styles.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
 
 </head>
 
@@ -81,20 +69,14 @@
                     <a href="/">
                         <b class="uppercase logo-default">POS</b>
                     </a>
-                    <div class="menu-toggler sidebar-toggler">
-                        <span></span>
-                    </div>
                 </div>
-                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                    <span></span>
-                </a>
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                 data-close-others="true">
-                                {{-- <span class="username username-hide-on-mobile"> {{ Auth()->user()->name }} </span> --}}
+                                {{-- <span class="username username-hide-on-mobile"> {{ Auth()->user()->name }} </span>
+                                --}}
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
@@ -102,7 +84,8 @@
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="icon-key"></i> <span>
-                                            {{ trans('site.log_out') }}</span>
+                                            @lang('site.logout')
+                                        </span>
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
@@ -126,15 +109,15 @@
                                 <li>
                                     <a href="/admin/lang/ar"> <i class="fa fa-globe" aria-hidden="true"></i>
                                         {{ trans('site.arabic') }}</a>
-                                </li>
-                                @else
-                                <li>
-                                    <a href="/admin/lang/en"> <i class="fa fa-globe" aria-hidden="true"></i>
-                                        {{ trans('site.english') }} </a>
-                                </li>
-                                @endif
-                            </ul> --}}
                         </li>
+                        @else
+                        <li>
+                            <a href="/admin/lang/en"> <i class="fa fa-globe" aria-hidden="true"></i>
+                                {{ trans('site.english') }} </a>
+                        </li>
+                        @endif
+                    </ul> --}}
+                    </li>
                     </ul>
                 </div>
             </div>
@@ -147,7 +130,7 @@
 
         <div class="page-footer">
             <div class="page-footer-inner">
-                All rights are saved
+                @lang('site.all_rights')
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
