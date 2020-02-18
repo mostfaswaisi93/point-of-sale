@@ -14,30 +14,38 @@
                         <span class="title">@lang('site.home')</span>
                     </a>
                 </li>
+                {{-- @if (auth()->user()->hasPermission('read_categories')) --}}
                 <li {{ request()->route()->getName() === 'admin.categories.index' ? ' class=active' : '' }}>
                     <a href="/admin/categories" class="nav-link">
                         <i class="fa fa-tags font-green"></i>
                         <span class="title">@lang('site.categories')</span>
                     </a>
                 </li>
+                {{-- @endif --}}
+                {{-- @if (auth()->user()->hasPermission('read_products')) --}}
                 <li {{ request()->route()->getName() === 'admin.products.index' ? ' class=active' : '' }}>
                     <a href="/admin/products" class="nav-link">
                         <i class="fa fa-product-hunt font-green"></i>
                         <span class="title">@lang('site.products')</span>
                     </a>
                 </li>
+                {{-- @endif --}}
+                {{-- @if (auth()->user()->hasPermission('read_clients')) --}}
                 <li {{ request()->route()->getName() === 'admin.clients.index' ? ' class=active' : '' }}>
                     <a href="/admin/clients" class="nav-link">
                         <i class="fa fa-users font-green"></i>
                         <span class="title">@lang('site.clients')</span>
                     </a>
                 </li>
+                {{-- @endif --}}
+                {{-- @if (auth()->user()->hasPermission('read_orders')) --}}
                 <li {{ request()->route()->getName() === 'admin.orders.index' ? ' class=active' : '' }}>
                     <a href="/admin/orders" class="nav-link">
                         <i class="fa fa-shopping-cart font-green"></i>
                         <span class="title">@lang('site.orders')</span>
                     </a>
                 </li>
+                {{-- @endif --}}
                 {{-- @if (auth()->user()->hasPermission('read_users')) --}}
                 <li {{ request()->route()->getName() === 'admin.users.index' ? ' class=active' : '' }}>
                     <a href="{{ route('admin.users.index') }}" class="nav-link">

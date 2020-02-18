@@ -48,7 +48,7 @@ return [
     'last_name'                 => 'الاسم الأخير',
     'email'                     => 'البريد الإلكتروني',
     'image'                     => 'صورة',
-    'action'                    => 'أكشن',
+    'action'                    => 'خيارات',
 
     'permissions'               => 'الصلاحيات',
     'categories'                => 'الأقسام',

@@ -13,7 +13,7 @@
             <i class="fa fa-angle-left"></i>
         </li>
         <li>
-            <a href="/admin/users/create">@lang('site.add') @lang('site.user')</a>
+            <a href="/admin/users/create">@lang('site.edit') @lang('site.user')</a>
         </li>
     </ul>
 </div>
@@ -23,34 +23,35 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-folder-open"></i>
-                    @lang('site.add') @lang('site.user')
+                    @lang('site.edit') @lang('site.user')
                 </div>
             </div>
             <div class="portlet-body form">
                 @include('partials._errors')
-                <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.users.update', $user->id) }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('put')
                     <div class="form-body">
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label col-md-2">@lang('site.first_name')</label>
                                 <div class="col-md-6">
                                     <input type="text" name="first_name" class="form-control"
-                                        value="{{ old('first_name') }}">
+                                        value="{{ $user->first_name }}">
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label col-md-2">@lang('site.last_name')</label>
                                 <div class="col-md-6">
                                     <input type="text" name="last_name" class="form-control"
-                                        value="{{ old('last_name') }}">
+                                        value="{{ $user->last_name }}">
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label col-md-2">@lang('site.email')</label>
                                 <div class="col-md-6">
-                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
@@ -62,7 +63,7 @@
                             <div class="form-group col-md-12">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-6">
-                                    <img src="{{ asset('uploads/user_images/default.png') }}" style="width: 100px"
+                                    <img src="{{ $user->image_path }}" style="width: 100px"
                                         class="img-thumbnail image-preview" alt="">
                                 </div>
                             </div>
@@ -100,25 +101,20 @@
                                             id="{{ $model }}">
                                             @foreach ($maps as $map)
                                             <label><input type="checkbox" name="permissions[]" class="icheck"
-                                                    value="{{ $map . '_' . $model }}"> @lang('site.' . $map)</label>
+                                                {{ $user->hasPermission($map . '_' . $model) ? 'checked' : '' }}
+                                                value="{{ $map . '_' . $model }}"> @lang('site.' . $map)</label>
                                             @endforeach
                                         </div>
                                         @endforeach
                                     </div>
                                 </div>
-
-
                             </div>
-
-
-
-
                         </div>
                     </div>
                     <div class="form-actions">
                         <div class="btn-set pull-left">
-                            <button type="submit" class="btn blue"><i class="fa fa-plus"></i>
-                                @lang('site.add')</button>
+                            <button type="submit" class="btn blue"><i class="fa fa-edit"></i>
+                                @lang('site.edit')</button>
                         </div>
                     </div>
                 </form>

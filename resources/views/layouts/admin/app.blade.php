@@ -15,6 +15,7 @@
         rel="stylesheet" />
     <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/datatables/datatables.min.css') }}"
         rel="stylesheet" />
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" />
 
     @if (app()->getLocale() == 'ar')
     <link href="{{ asset('admin_files/metronic-rtl/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css') }}"
@@ -54,6 +55,10 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
     @endif
+
+    {{--noty--}}
+    <link rel="stylesheet" href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.css') }}">
+    <script src="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.min.js') }}"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -174,15 +179,41 @@
         <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/global/scripts/quick-nav.min.js') }}">
         </script>
 
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/icheck/icheck.min.js') }}"></script>
+        <script src="{{ asset('/admin_files/metronic-ltr/assets/pages/scripts/form-icheck.min.js') }}"></script>
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
 
-        @stack('scripts')
-
         <script>
-            CKEDITOR.config.language =  "{{ app()->getLocale() }}";
+            $(document).ready(function () {
+        //Delete
+        $('.delete').click(function (e) {
+            var that = $(this)
+            e.preventDefault();
+            var n = new Noty({
+                text: "@lang('site.confirm_delete')",
+                type: "alert",
+                killer: true,
+                buttons: [
+                    Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
+                        that.closest('form').submit();
+                    }),
+                    Noty.button("@lang('site.no')", 'btn btn-primary mr-2', function () {
+                        n.close();
+                    })
+                ]
+            });
+            n.show();
+        });
+        CKEDITOR.config.language =  "{{ app()->getLocale() }}";
+        
+    });
         </script>
+        @stack('scripts')
 
 </body>
 
