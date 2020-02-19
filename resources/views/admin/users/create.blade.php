@@ -22,7 +22,7 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-folder-open"></i>
+                    <i class="fa fa-plus-circle"></i>
                     @lang('site.add') @lang('site.user')
                 </div>
             </div>

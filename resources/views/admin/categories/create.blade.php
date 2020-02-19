@@ -22,7 +22,7 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-folder-open"></i>
+                    <i class="fa fa-plus-circle"></i>
                     @lang('site.add') @lang('site.category')
                 </div>
             </div>
@@ -33,12 +33,16 @@
                     @method('post')
                     <div class="form-body">
                         <div class="row">
+                            @foreach (config('translatable.locales') as $locale)
                             <div class="form-group col-md-12">
-                                <label for="name" class="control-label col-md-2">@lang('site.name')</label>
+                                <label for="name" class="control-label col-md-2">@lang('site.' . $locale .
+                                    '.name')</label>
                                 <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                                    <input type="text" name="{{ $locale }}[name]" class="form-control"
+                                        value="{{ old($locale . '.name') }}">
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="form-actions">
