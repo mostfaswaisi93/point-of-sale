@@ -85,7 +85,7 @@
                             <div class="form-group col-md-12">
                                 <div class="nav nav-tabs">
                                     @php
-                                    $models = ['users', 'categories', 'products'];
+                                    $models = ['users', 'categories', 'products', 'clients', 'orders'];
                                     $maps = ['create', 'read', 'update', 'delete'];
                                     @endphp
                                     <ul class="nav nav-tabs">
@@ -106,13 +106,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-
-
                             </div>
-
-
-
-
                         </div>
                     </div>
                     <div class="form-actions">

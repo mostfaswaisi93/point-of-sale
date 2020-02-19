@@ -33,6 +33,7 @@ return [
     'no_records'                => 'No Records',
 
     'clients'                   => 'Clients',
+    'client'                    => 'Client',
     'client_name'               => 'Client Name',
     'phone'                     => 'Phone',
     'address'                   => 'Address',

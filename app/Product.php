@@ -8,7 +8,7 @@ class Product extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
     public $translatedAttributes = ['name', 'description'];
     protected $appends = ['image_path', 'profit_percent'];
 
@@ -27,5 +27,9 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'product_order');
     }
 }

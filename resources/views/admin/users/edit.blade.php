@@ -28,8 +28,7 @@
             </div>
             <div class="portlet-body form">
                 @include('partials._errors')
-                <form action="{{ route('admin.users.update', $user->id) }}" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-body">
@@ -86,7 +85,7 @@
                             <div class="form-group col-md-12">
                                 <div class="nav nav-tabs">
                                     @php
-                                    $models = ['users', 'categories', 'products'];
+                                    $models = ['users', 'categories', 'products', 'clients', 'orders'];
                                     $maps = ['create', 'read', 'update', 'delete'];
                                     @endphp
                                     <ul class="nav nav-tabs">
@@ -101,8 +100,8 @@
                                             id="{{ $model }}">
                                             @foreach ($maps as $map)
                                             <label><input type="checkbox" name="permissions[]" class="icheck"
-                                                {{ $user->hasPermission($map . '_' . $model) ? 'checked' : '' }}
-                                                value="{{ $map . '_' . $model }}"> @lang('site.' . $map)</label>
+                                                    {{ $user->hasPermission($map . '_' . $model) ? 'checked' : '' }}
+                                                    value="{{ $map . '_' . $model }}"> @lang('site.' . $map)</label>
                                             @endforeach
                                         </div>
                                         @endforeach

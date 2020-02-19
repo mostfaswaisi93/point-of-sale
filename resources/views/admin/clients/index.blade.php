@@ -16,11 +16,11 @@
 </div>
 <div class="table-toolbar">
     <div class="row">
-        <form action="{{ route('admin.clients.index') }}" method="get">
+        <form action="{{ route('admin.clients.index') }}" method="get" id="formID">
             <div class="form-group col-md-4">
                 <br>
                 <input type="text" name="search" class="form-control" placeholder="@lang('site.search')"
-                    value="{{ request()->search }}">
+                    value="{{ request()->search }}" id="selectform">
             </div>
             <div class="col-md-1">
                 <br>
@@ -63,8 +63,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('site.name')</th>
-                                <th>@lang('site.products_count')</th>
-                                <th>@lang('site.related_products')</th>
+                                <th>@lang('site.phone')</th>
+                                <th>@lang('site.address')</th>
+                                <th>@lang('site.add_order')</th>
                                 <th>@lang('site.action')</th>
                             </tr>
                         </thead>
@@ -73,9 +74,16 @@
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $client->name }}</td>
-                                <td>{{ $client->products->count() }}</td>
-                                <td><a href="{{ route('dashboard.products.index', ['client_id' => $client->id]) }}"
-                                        class="btn btn-info btn-sm">@lang('site.related_products')</a></td>
+                                <td>{{ is_array($client->phone) ? implode('-', $client->phone) : $client->phone }}</td>
+                                <td>{{ $client->address }}</td>
+                                <td>
+                                    @if (auth()->user()->hasPermission('create_orders'))
+                                    <a href="{{ route('admin.clients.orders.create', $client->id) }}"
+                                        class="btn btn-primary btn-sm">@lang('site.add_order')</a>
+                                    @else
+                                    <a href="#" class="btn btn-primary btn-sm disabled">@lang('site.add_order')</a>
+                                    @endif
+                                </td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_clients'))
                                     <a href="{{ route('admin.clients.edit', $client->id) }}"

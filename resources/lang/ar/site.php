@@ -32,8 +32,9 @@ return [
     'no_data_found'             => 'لا يوجد أي سجلات',
     'no_records'                => 'لا يوجد أي سجلات',
 
-    'clients'                   => 'العملاء',
-    'client_name'               => 'اسم العميل',
+    'clients'                   => 'الزبائن',
+    'client'                    => 'الزبون',
+    'client_name'               => 'اسم الزبون',
     'phone'                     => 'التلفون',
     'address'                   => 'العنوان',
     'previous_orders'           => 'الطلبات السابقة',
