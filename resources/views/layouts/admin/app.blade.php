@@ -182,7 +182,9 @@
         <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/icheck/icheck.min.js') }}"></script>
         <script src="{{ asset('/admin_files/metronic-ltr/assets/pages/scripts/form-icheck.min.js') }}"></script>
 
-
+        {{--custom js--}}
+        <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
+        <script src="{{ asset('admin_files/js/custom/order.js') }}"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -210,18 +212,6 @@
             n.show();
         });
 
-         // image preview
-        $(".image").change(function () {
-
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('.image-preview').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
         
     });

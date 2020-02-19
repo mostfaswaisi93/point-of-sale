@@ -53,7 +53,7 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-tags"></i>@lang('site.clients')</div>
+                    <i class="fa fa-users"></i>@lang('site.clients')</div>
             </div>
             <div class="portlet-body">
                 <div class="table-scrollable">

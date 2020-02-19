@@ -20,15 +20,14 @@
 
             <div class="box-header">
                 <h3 class="box-title">@lang('site.edit')</h3>
-            </div><!-- end of box header -->
+            </div>
             <div class="box-body">
 
                 @include('partials._errors')
 
                 <form action="{{ route('admin.clients.update', $client->id) }}" method="post">
-
-                    {{ csrf_field() }}
-                    {{ method_field('put') }}
+                    @csrf
+                    @method('put')
 
                     <div class="form-group">
                         <label>@lang('site.name')</label>
@@ -50,14 +49,11 @@
                 <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('site.edit')</button>
             </div>
 
-            </form><!-- end of form -->
+            </form>
 
-        </div><!-- end of box body -->
+        </div>
+    </section>
 
-</div><!-- end of box -->
-
-</section><!-- end of content -->
-
-</div><!-- end of content wrapper -->
+</div>
 
 @endsection
