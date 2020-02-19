@@ -58,7 +58,7 @@
             <div class="portlet-body">
                 <div class="table-scrollable">
                     @if ($users->count() > 0)
-                    <table class="table table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -76,7 +76,7 @@
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td><img src="{{ $user->image_path }}" style="width: 100px;" class="img-thumbnail"
+                                <td><img src="{{ $user->image_path }}" style="width: 50px;" class="img-thumbnail"
                                         alt=""></td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_users'))
@@ -84,7 +84,7 @@
                                             class="fa fa-edit"></i> @lang('site.edit')</a>
                                     @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i>
-                                        @lang('site.edit')</a>
+                                    </a>
                                     @endif
                                     @if (auth()->user()->hasPermission('delete_users'))
                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="post"
@@ -92,11 +92,11 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger delete btn-sm"><i
-                                                class="fa fa-trash"></i> @lang('site.delete')</button>
+                                                class="fa fa-trash"></i></button>
                                     </form>
                                     @else
                                     <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i>
-                                        @lang('site.delete')</button>
+                                    </button>
                                     @endif
                                 </td>
                             </tr>

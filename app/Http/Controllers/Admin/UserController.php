@@ -13,37 +13,43 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        //create read update delete
         // $this->middleware(['permission:read_users'])->only('index');
         // $this->middleware(['permission:create_users'])->only('create');
         // $this->middleware(['permission:update_users'])->only('edit');
         // $this->middleware(['permission:delete_users'])->only('destroy');
-    }
+    } //end of constructor
 
     public function index(Request $request)
     {
-        $users = User::whereRoleIs('admin')->when($request->search, function ($query) use ($request) {
+        $users = User::whereRoleIs('admin')->where(function ($q) use ($request) {
 
-            return $query->where('first_name', 'like', '%' . $request->search . '%')
-                ->orWhere('last_name', 'like', '%' . $request->search . '%');
+            return $q->when($request->search, function ($query) use ($request) {
+
+                return $query->where('first_name', 'like', '%' . $request->search . '%')
+                    ->orWhere('last_name', 'like', '%' . $request->search . '%');
+            });
         })->latest()->paginate(5);
 
         return view('admin.users.index', compact('users'));
-    }
+    } //end of index
 
-    public function create()
+    public
+    function create()
     {
         return view('admin.users.create');
-    }
+    } //end of create
 
-    public function store(Request $request)
+    public
+    function store(Request $request)
     {
         $request->validate([
-            'first_name'        => 'required',
-            'last_name'         => 'required',
-            'email'             => 'required|unique:users',
-            'image'             => 'image',
-            'password'          => 'required|confirmed',
-            'permissions'       => 'required|min:1'
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:users',
+            'image' => 'image',
+            'password' => 'required|confirmed',
+            'permissions' => 'required|min:1'
         ]);
 
         $request_data = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
@@ -58,7 +64,7 @@ class UserController extends Controller
                 ->save(public_path('uploads/user_images/' . $request->image->hashName()));
 
             $request_data['image'] = $request->image->hashName();
-        }
+        } //end of if
 
         $user = User::create($request_data);
         $user->attachRole('admin');
@@ -66,14 +72,16 @@ class UserController extends Controller
 
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.users.index');
-    }
+    } //end of store
 
-    public function edit(User $user)
+    public
+    function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));
-    }
+    } //end of user
 
-    public function update(Request $request, User $user)
+    public
+    function update(Request $request, User $user)
     {
         $request->validate([
             'first_name' => 'required',
@@ -90,7 +98,7 @@ class UserController extends Controller
             if ($user->image != 'default.png') {
 
                 Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
-            }
+            } //end of inner if
 
             Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
@@ -99,23 +107,26 @@ class UserController extends Controller
                 ->save(public_path('uploads/user_images/' . $request->image->hashName()));
 
             $request_data['image'] = $request->image->hashName();
-        }
+        } //end of external if
 
         $user->update($request_data);
 
         $user->syncPermissions($request->permissions);
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('admin.users.index');
-    }
+    } //end of update
 
-    public function destroy(User $user)
+    public
+    function destroy(User $user)
     {
         if ($user->image != 'default.png') {
+
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
-        }
+        } //end of if
 
         $user->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return redirect()->route('admin.users.index');
-    }
-}
+    } //end of destroy
+
+}//end of controller

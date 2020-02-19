@@ -28,7 +28,7 @@
             </div>
             <div class="portlet-body form">
                 @include('partials._errors')
-                <form action="{{ route('dashboard.users.update', $user->id) }}" method="post"
+                <form action="{{ route('admin.users.update', $user->id) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
