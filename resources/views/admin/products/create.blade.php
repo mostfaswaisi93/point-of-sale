@@ -47,17 +47,15 @@
                                     </select>
                                 </div>
                             </div>
-
                             @foreach (config('translatable.locales') as $locale)
-                            <div class="form-group">
+                            <div class="form-group col-md-12">
                                 <label class="control-label col-md-2">@lang('site.' . $locale . '.name')</label>
                                 <div class="col-md-6">
                                     <input type="text" name="{{ $locale }}[name]" class="form-control"
                                         value="{{ old($locale . '.name') }}">
                                 </div>
                             </div>
-
-                            <div class="form-group">
+                            <div class="form-group col-md-12">
                                 <label class="control-label col-md-2">@lang('site.' . $locale . '.description')</label>
                                 <div class="col-md-6">
                                     <textarea name="{{ $locale }}[description]"
@@ -65,7 +63,6 @@
                                 </div>
                             </div>
                             @endforeach
-
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label col-md-2">@lang('site.image')</label>
                                 <div class="col-md-6">

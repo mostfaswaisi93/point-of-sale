@@ -19,14 +19,24 @@
         <form action="{{ route('admin.products.index') }}" method="get">
             <div class="form-group col-md-4">
                 <br>
+                <select name="category_id" class="form-control">
+                    <option value="">@lang('site.all_categories')</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ request()->category_id == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <br>
                 <input type="text" name="search" class="form-control" placeholder="@lang('site.search')"
                     value="{{ request()->search }}">
             </div>
-            <div class="col-md-1">
+            <div class="form-group col-md-1">
                 <br>
                 <button style="width: 100%" class="btn btn-info" type="submit">@lang('site.search')</button>
             </div>
-            <div class="col-md-1">
+            <div class="form-group col-md-1">
                 <br>
                 <button style="width: 100%" type="reset" class="btn btn-danger">@lang('site.reset')</button>
             </div>
@@ -80,7 +90,8 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{!! $product->description !!}</td>
                                 <td>{{ $product->category->name }}</td>
-                                <td><img src="{{ $product->image_path }}" style="width: 50px" class="img-thumbnail" alt="">
+                                <td><img src="{{ $product->image_path }}" style="width: 50px" class="img-thumbnail"
+                                        alt="">
                                 </td>
                                 <td>{{ $product->purchase_price }}</td>
                                 <td>{{ $product->sale_price }}</td>

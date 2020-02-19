@@ -16,29 +16,28 @@ class CategoryController extends Controller
             return $q->whereTranslationLike('name', '%' . $request->search . '%');
         })->latest()->paginate(5);
 
-        return view('admin.categories.index', compact('categories'));
-    } //end of index
+        return view('admin.categories.index')->with('categories', $categories);
+    }
 
     public function create()
     {
         return view('admin.categories.create');
-    } //end of create
+    }
 
     public function store(Request $request)
     {
         $rules = [];
 
         foreach (config('translatable.locales') as $locale) {
-
             $rules += [$locale . '.name' => ['required', Rule::unique('category_translations', 'name')]];
-        } //end of for each
+        }
 
         $request->validate($rules);
 
         Category::create($request->all());
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.categories.index');
-    } //end of store
+    } 
 
     public function edit(Category $category)
     {

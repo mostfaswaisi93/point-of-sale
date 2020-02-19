@@ -41,7 +41,7 @@
                 {{-- @if (auth()->user()->hasPermission('read_orders')) --}}
                 <li {{ request()->route()->getName() === 'admin.orders.index' ? ' class=active' : '' }}>
                     <a href="/admin/orders" class="nav-link">
-                        <i class="fa fa-shopping-cart font-green"></i>
+                        <i class="fa fa-money font-green"></i>
                         <span class="title">@lang('site.orders')</span>
                     </a>
                 </li>
