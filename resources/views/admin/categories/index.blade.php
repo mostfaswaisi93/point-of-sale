@@ -24,11 +24,11 @@
             </div>
             <div class="col-md-1">
                 <br>
-                <button style="width: 100%" class="btn btn-info" type="submit">@lang('site.search')</button>
+                <button class="btn btn-info" type="submit">@lang('site.search')</button>
             </div>
             <div class="col-md-1">
                 <br>
-                <button style="width: 100%" type="reset" class="btn btn-danger">@lang('site.reset')</button>
+                <button type="reset" class="btn btn-danger">@lang('site.reset')</button>
             </div>
         </form>
     </div>
@@ -65,6 +65,7 @@
                                 <th>@lang('site.name')</th>
                                 <th>@lang('site.products_count')</th>
                                 <th>@lang('site.related_products')</th>
+                                <th>@lang('site.created_at')</th>
                                 <th>@lang('site.action')</th>
                             </tr>
                         </thead>
@@ -76,6 +77,7 @@
                                 <td>{{ $category->products->count() }}</td>
                                 <td><a href="{{ route('admin.products.index', ['category_id' => $category->id]) }}"
                                         class="btn btn-info btn-sm">@lang('site.related_products')</a></td>
+                                <td>{{ $category->created_at->format('m-d-Y') }}</td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_categories'))
                                     <a href="{{ route('admin.categories.edit', $category->id) }}"

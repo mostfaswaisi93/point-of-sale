@@ -24,11 +24,11 @@
             </div>
             <div class="col-md-1">
                 <br>
-                <button style="width: 100%" class="btn btn-info" type="submit">@lang('site.search')</button>
+                <button class="btn btn-info" type="submit">@lang('site.search')</button>
             </div>
             <div class="col-md-1">
                 <br>
-                <button style="width: 100%" type="reset" class="btn btn-danger">@lang('site.reset')</button>
+                <button type="reset" class="btn btn-danger">@lang('site.reset')</button>
             </div>
         </form>
     </div>

@@ -37,12 +37,12 @@ class CategoryController extends Controller
         Category::create($request->all());
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.categories.index');
-    } 
+    }
 
     public function edit(Category $category)
     {
         return view('admin.categories.edit', compact('category'));
-    } //end of edit
+    }
 
     public function update(Request $request, Category $category)
     {
@@ -51,20 +51,19 @@ class CategoryController extends Controller
         foreach (config('translatable.locales') as $locale) {
 
             $rules += [$locale . '.name' => ['required', Rule::unique('category_translations', 'name')->ignore($category->id, 'category_id')]];
-        } //end of for each
+        }
 
         $request->validate($rules);
 
         $category->update($request->all());
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('admin.categories.index');
-    } //end of update
+    }
 
     public function destroy(Category $category)
     {
         $category->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return redirect()->route('admin.categories.index');
-    } //end of destroy
-
-}//end of controller
+    }
+}
