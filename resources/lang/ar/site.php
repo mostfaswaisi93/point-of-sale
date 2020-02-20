@@ -39,7 +39,7 @@ return [
     'address'                   => 'العنوان',
     'previous_orders'           => 'الطلبات السابقة',
 
-    'orders'                    => 'الطلبات',
+    'orders'                    => 'الطلبات/ الكاشير',
     'add_order'                 => 'أضف طلب',
     'edit_order'                => 'تعديل طلب',
 
@@ -52,7 +52,7 @@ return [
     'action'                    => 'خيارات',
 
     'permissions'               => 'الصلاحيات',
-    'categories'                => 'الأقسام',
+    'categories'                => 'الأقسام/ التصنيفات',
     'all_categories'            => 'كل الأقسام',
     'name'                      => 'الاسم',
     'description'               => 'الوصف',
@@ -60,7 +60,7 @@ return [
     'related_products'          => 'المنتجات المرتبطة',
     'category'                  => 'القسم',
     'show_products'             => 'عرض المنتجات',
-    'created_at'                => 'تم إضافته',
+    'created_at'                => 'تاريخ الإنشاء',
 
     'products'                  => 'المنتجات',
     'product'                   => 'المنتج',

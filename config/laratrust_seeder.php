@@ -2,7 +2,7 @@
 
 return [
     'role_structure' => [
-        'super_admin' => [
+        'super_administrator' => [
             'categories' => 'c,r,u,d',
             'products' => 'c,r,u,d',
             'clients' => 'c,r,u,d',

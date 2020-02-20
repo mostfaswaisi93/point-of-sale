@@ -58,7 +58,7 @@
             <div class="portlet-body">
                 <div class="table-scrollable">
                     @if ($users->count() > 0)
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -66,6 +66,7 @@
                                 <th>@lang('site.last_name')</th>
                                 <th>@lang('site.email')</th>
                                 <th>@lang('site.image')</th>
+                                <th>@lang('site.created_at')</th>
                                 <th>@lang('site.action')</th>
                             </tr>
                         </thead>
@@ -78,10 +79,11 @@
                                 <td>{{ $user->email }}</td>
                                 <td><img src="{{ $user->image_path }}" style="width: 50px;" class="img-thumbnail"
                                         alt=""></td>
+                                <td>{{ $user->created_at->format('m-d-Y') }}</td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_users'))
                                     <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-info btn-sm"><i
-                                            class="fa fa-edit"></i> @lang('site.edit')</a>
+                                            class="fa fa-edit"></i></a>
                                     @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i>
                                     </a>
@@ -105,7 +107,7 @@
                     </table>
                     {{ $users->appends(request()->query())->links() }}
                     @else
-                    <h4>@lang('site.no_data_found')</h4>
+                    <h5>@lang('site.no_data_found')</h5>
                     @endif
                 </div>
             </div>

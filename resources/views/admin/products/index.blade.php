@@ -100,7 +100,7 @@
                                 <td>
                                     @if (auth()->user()->hasPermission('update_products'))
                                     <a href="{{ route('admin.products.edit', $product->id) }}"
-                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                     @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i>
                                     </a>
@@ -124,7 +124,7 @@
                     </table>
                     {{ $products->appends(request()->query())->links() }}
                     @else
-                    <h4>@lang('site.no_data_found')</h4>
+                    <h5>@lang('site.no_data_found')</h5>
                     @endif
                 </div>
             </div>

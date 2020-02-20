@@ -87,7 +87,7 @@
                                 <td>
                                     @if (auth()->user()->hasPermission('update_clients'))
                                     <a href="{{ route('admin.clients.edit', $client->id) }}"
-                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                     @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i>
                                     </a>
@@ -111,7 +111,7 @@
                     </table>
                     {{ $clients->appends(request()->query())->links() }}
                     @else
-                    <h4>@lang('site.no_data_found')</h4>
+                    <h5>@lang('site.no_data_found')</h5>
                     @endif
                 </div>
             </div>

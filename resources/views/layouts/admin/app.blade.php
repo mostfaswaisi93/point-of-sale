@@ -17,6 +17,9 @@
         rel="stylesheet" />
     <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" />
 
+    {{--noty--}}
+    <link rel="stylesheet" href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.css') }}">
+    <script src="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.min.js') }}"></script>
     @if (app()->getLocale() == 'ar')
     <link href="{{ asset('admin_files/metronic-rtl/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css') }}"
         rel="stylesheet" />
@@ -55,10 +58,6 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
     @endif
-
-    {{--noty--}}
-    <link rel="stylesheet" href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.css') }}">
-    <script src="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.min.js') }}"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -201,10 +200,10 @@
                 type: "alert",
                 killer: true,
                 buttons: [
-                    Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
+                    Noty.button("@lang('site.yes')", 'btn btn-danger mr-2', function () {
                         that.closest('form').submit();
                     }),
-                    Noty.button("@lang('site.no')", 'btn btn-primary mr-2', function () {
+                    Noty.button("@lang('site.no')", 'btn btn-light mr-2', function () {
                         n.close();
                     })
                 ]

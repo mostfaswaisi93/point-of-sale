@@ -67,19 +67,6 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="name" class="control-label col-md-2">@lang('site.password')</label>
-                                <div class="col-md-6">
-                                    <input type="password" name="password" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="name"
-                                    class="control-label col-md-2">@lang('site.password_confirmation')</label>
-                                <div class="col-md-6">
-                                    <input type="password" name="password_confirmation" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-12">
                                 <label class="control-label col-md-2">@lang('site.permissions')</label>
                             </div>
                             <div class="form-group col-md-12">

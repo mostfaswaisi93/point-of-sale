@@ -26,6 +26,12 @@ class WelcomeController extends Controller
             DB::raw('SUM(total_price) as sum')
         )->groupBy('month')->get();
 
-        return view('admin.welcome', compact('categories_count', 'products_count', 'clients_count', 'users_count', 'sales_data'));
+        return view('admin.welcome', compact(
+            'categories_count',
+            'products_count',
+            'clients_count',
+            'users_count',
+            'sales_data'
+        ));
     }
 }

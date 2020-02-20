@@ -1,4 +1,4 @@
-// image preview
+// Image Preview
 $(".image").change(function() {
 
     if (this.files && this.files[0]) {

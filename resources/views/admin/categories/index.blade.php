@@ -53,7 +53,7 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-tags"></i>@lang('site.categories')</div>
+                    <i class="fa fa-list"></i>@lang('site.categories')</div>
             </div>
             <div class="portlet-body">
                 <div class="table-scrollable">
@@ -74,12 +74,12 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
-                                <td><a href="{{ route('dashboard.products.index', ['category_id' => $category->id]) }}"
+                                <td><a href="{{ route('admin.products.index', ['category_id' => $category->id]) }}"
                                         class="btn btn-info btn-sm">@lang('site.related_products')</a></td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_categories'))
                                     <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                     @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i>
                                     </a>
@@ -103,7 +103,7 @@
                     </table>
                     {{ $categories->appends(request()->query())->links() }}
                     @else
-                    <h4>@lang('site.no_data_found')</h4>
+                    <h5>@lang('site.no_data_found')</h5>
                     @endif
                 </div>
             </div>
