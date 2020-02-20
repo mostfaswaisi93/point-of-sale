@@ -44,6 +44,7 @@ return [
     'edit_order'                => 'Edit Order',
 
     'users'                     => 'Users',
+    'users_management'          => 'Users Management',
     'user'                      => 'User',
     'first_name'                => 'First Name',
     'last_name'                 => 'Last Name',

@@ -28,10 +28,10 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'phone' => 'required|array|min:1',
-            'phone.0' => 'required',
-            'address' => 'required',
+            'name'      => 'required',
+            'phone'     => 'required|array|min:1',
+            'phone.0'   => 'required',
+            'address'   => 'required',
         ]);
 
         $request_data = $request->all();
@@ -51,10 +51,10 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $request->validate([
-            'name' => 'required',
-            'phone' => 'required|array|min:1',
-            'phone.0' => 'required',
-            'address' => 'required',
+            'name'      => 'required',
+            'phone'     => 'required|array|min:1',
+            'phone.0'   => 'required',
+            'address'   => 'required',
         ]);
 
         $request_data = $request->all();

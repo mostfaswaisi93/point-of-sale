@@ -17,6 +17,7 @@ class ProductOrderTable extends Migration
             $table->bigIncrements('id');
             $table->integer('product_id')->unsigned()->onDelete('cascade');
             $table->integer('order_id')->unsigned()->onDelete('cascade');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }

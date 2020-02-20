@@ -16,7 +16,7 @@
 </div>
 <div class="table-toolbar">
     <div class="row">
-        <form action="{{ route('admin.clients.index') }}" method="get" id="formID">
+        <form action="{{ route('admin.clients.index') }}" method="get">
             <div class="form-group col-md-4">
                 <br>
                 <input type="text" name="search" class="form-control" placeholder="@lang('site.search')"
