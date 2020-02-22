@@ -15,8 +15,12 @@
                 <td>{{ number_format($product->pivot->quantity * $product->sale_price, 2) }}</td>
             </tr>
             @endforeach
+            <tr>
+                <td colspan="3">
+                    <h4>@lang('site.total') <span>{{ number_format($order->total_price, 2) }}</span></h4>
+                </td>
+            </tr>
         </tbody>
     </table>
-    <h3>@lang('site.total') <span>{{ number_format($order->total_price, 2) }}</span></h3>
 </div>
 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>

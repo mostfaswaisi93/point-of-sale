@@ -62,16 +62,15 @@
                                 <td>
                                     <button class="btn btn-primary btn-sm order-products"
                                         data-url="{{ route('admin.orders.products', $order->id) }}" data-method="get">
-                                        <i class="fa fa-list"></i>
-                                        @lang('site.show')
+                                        <i class="fa fa-eye"></i>
                                     </button>
                                     @if (auth()->user()->hasPermission('update_orders'))
                                     <a href="{{ route('admin.clients.orders.edit', ['client' => $order->client->id, 'order' => $order->id]) }}"
-                                        class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                        @lang('site.edit')</a>
+                                        class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
+                                    </a>
                                     @else
-                                    <a href="#" disabled class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>
-                                        @lang('site.edit')</a>
+                                    <a href="#" disabled class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
+                                    </a>
                                     @endif
                                     @if (auth()->user()->hasPermission('delete_orders'))
                                     <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post"
@@ -80,11 +79,11 @@
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm delete"><i
                                                 class="fa fa-trash"></i>
-                                            @lang('site.delete')</button>
+                                        </button>
                                     </form>
                                     @else
                                     <a href="#" class="btn btn-danger btn-sm" disabled><i class="fa fa-trash"></i>
-                                        @lang('site.delete')</a>
+                                    </a>
                                     @endif
                                 </td>
                             </tr>

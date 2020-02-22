@@ -24,7 +24,7 @@
             </div>
             <div class="portlet-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 active-tab">
                         <ul class="nav nav-tabs tabs-left">
                             @foreach ($categories as $index=>$category)
                             <li class="{{ $index == 0 ? 'active' : '' }}">
@@ -96,8 +96,14 @@
                             </thead>
                             <tbody class="order-list">
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4">
+                                        <h4>@lang('site.total') : <span class="total-price">0</span></h4>
+                                    </th>
+                                </tr>
+                            </tfoot>
                         </table>
-                        <h4>@lang('site.total') : <span class="total-price">0</span></h4>
                         <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i
                                 class="fa fa-plus"></i> @lang('site.add_order')</button>
                     </form>
@@ -110,8 +116,8 @@
 <div class="row">
     <div class="col-md-7"></div>
     <div class="col-md-5">
+        @if ($client->orders->count() > 0)
         <div class="portlet box blue">
-            @if ($client->orders->count() > 0)
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-reorder"></i>@lang('site.previous_orders')
@@ -119,7 +125,7 @@
             </div>
             <div class="portlet-body">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-5 active-tab">
                         <ul class="nav nav-tabs tabs-left">
                             @foreach ($orders as $index=>$order)
                             <li class="{{ $index == 0 ? 'active' : '' }}">
@@ -143,8 +149,9 @@
                     </div>
                 </div>
             </div>
-            @endif
         </div>
+        @endif
     </div>
 </div>
+
 @endsection

@@ -117,7 +117,7 @@
     color: #fff;
 }
 
-.nav-tabs>li.active>a {
+.active-tab .nav-tabs>li.active>a {
     background-color: #36c6d3;
     color: #fff;
 }

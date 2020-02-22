@@ -24,14 +24,14 @@ $(document).ready(function() {
         calculateTotal();
     });
 
-    //disabled btn
+    // Disabled btn
     $('body').on('click', '.disabled', function(e) {
 
         e.preventDefault();
 
-    }); //end of disabled
+    });
 
-    //remove product btn
+    // Remove Product btn
     $('body').on('click', '.remove-product-btn', function(e) {
 
         e.preventDefault();
@@ -40,12 +40,12 @@ $(document).ready(function() {
         $(this).closest('tr').remove();
         $('#product-' + id).removeClass('btn-default disabled').addClass('btn-success');
 
-        //to calculate total price
+        // Calculate Total Price
         calculateTotal();
 
-    }); //end of remove product btn
+    });
 
-    //change product quantity
+    // Change Product Quantity
     $('body').on('keyup change', '.product-quantity', function() {
 
         var quantity = Number($(this).val()); //2
@@ -54,9 +54,9 @@ $(document).ready(function() {
         $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
         calculateTotal();
 
-    }); //end of product quantity change
+    });
 
-    //list all order products
+    // All Order Products
     $('.order-products').on('click', function(e) {
 
         e.preventDefault();
@@ -77,18 +77,18 @@ $(document).ready(function() {
             }
         })
 
-    }); //end of order products click
+    });
 
-    //print order
+    // Print Order
     $(document).on('click', '.print-btn', function() {
 
         $('#print-area').printThis();
 
-    }); //end of click function
+    });
 
-}); //end of document ready
+});
 
-//calculate the total
+// Calculate The Total
 function calculateTotal() {
 
     var price = 0;
@@ -97,11 +97,11 @@ function calculateTotal() {
 
         price += parseFloat($(this).html().replace(/,/g, ''));
 
-    }); //end of product price
+    });
 
     $('.total-price').html($.number(price, 2));
 
-    //check if price > 0
+    // Check if Price > 0
     if (price > 0) {
 
         $('#add-order-form-btn').removeClass('disabled')
@@ -110,6 +110,6 @@ function calculateTotal() {
 
         $('#add-order-form-btn').addClass('disabled')
 
-    } //end of else
+    }
 
-} //end of calculate total
+}
