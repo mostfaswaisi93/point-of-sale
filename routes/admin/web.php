@@ -16,6 +16,10 @@ Route::group(
             Route::get('/orders/{order}/products', 'OrderController@products')->name('orders.products');
 
             Route::resource('users', 'UserController')->except(['show']);
+
+            Route::resource('cat', 'CatController');
+            Route::post('cat/update', 'CatController@update')->name('cat.update');
+            Route::get('cat/destroy/{id}', 'CatController@destroy');
         });
     }
 );

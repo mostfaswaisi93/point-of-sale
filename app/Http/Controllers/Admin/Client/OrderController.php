@@ -16,8 +16,9 @@ class OrderController extends Controller
     {
         $categories = Category::with('products')->get();
         $orders = $client->orders()->with('products')->paginate(5);
+
         return view('admin.clients.orders.create', compact('client', 'categories', 'orders'));
-    } //end of create
+    }
 
     public function store(Request $request, Client $client)
     {
@@ -29,14 +30,14 @@ class OrderController extends Controller
 
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.orders.index');
-    } //end of store
+    }
 
     public function edit(Client $client, Order $order)
     {
         $categories = Category::with('products')->get();
         $orders = $client->orders()->with('products')->paginate(5);
         return view('admin.clients.orders.edit', compact('client', 'order', 'categories', 'orders'));
-    } //end of edit
+    }
 
     public function update(Request $request, Client $client, Order $order)
     {
@@ -50,7 +51,7 @@ class OrderController extends Controller
 
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('admin.orders.index');
-    } //end of update
+    }
 
     private function attach_order($request, $client)
     {
@@ -68,12 +69,12 @@ class OrderController extends Controller
             $product->update([
                 'stock' => $product->stock - $quantity['quantity']
             ]);
-        } //end of foreach
+        }
 
         $order->update([
             'total_price' => $total_price
         ]);
-    } //end of attach order
+    }
 
     private function detach_order($order)
     {
@@ -82,9 +83,8 @@ class OrderController extends Controller
             $product->update([
                 'stock' => $product->stock + $product->pivot->quantity
             ]);
-        } //end of for each
+        }
 
         $order->delete();
-    } //end of detach order
-
-}//end of controller
+    }
+}

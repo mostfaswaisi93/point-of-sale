@@ -31,7 +31,7 @@ class UserController extends Controller
             });
         })->latest()->paginate(5);
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index')->with('users', $users);
     }
 
     public function create()
@@ -54,13 +54,11 @@ class UserController extends Controller
         $request_data['password'] = bcrypt($request->password);
 
         if ($request->image) {
-
             Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
                 ->save(public_path('uploads/user_images/' . $request->image->hashName()));
-
             $request_data['image'] = $request->image->hashName();
         }
 
@@ -74,7 +72,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit')->with('user', $user);
     }
 
     public function update(Request $request, User $user)
