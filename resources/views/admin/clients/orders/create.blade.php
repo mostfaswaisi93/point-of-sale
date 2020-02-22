@@ -2,27 +2,45 @@
 
 @section('content')
 
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/">@lang('site.home')</a>
+            <i class="fa fa-angle-left"></i>
+        </li>
+        <li>
+            <a href="/admin/clients">@lang('site.clients')</a>
+            <i class="fa fa-circle"></i>
+        </li>
+    </ul>
+</div>
+
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-users"></i>@lang('site.show_products')</div>
+                    <i class="fa fa-product-hunt"></i>@lang('site.show_products')</div>
             </div>
             <div class="portlet-body">
-                @foreach ($categories as $category)
-                <div class="panel-group">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse"
-                                    href="#{{ str_replace(' ', '-', $category->name) }}">{{ $category->name }}</a>
-                            </h4>
-                        </div>
-                        <div id="{{ str_replace(' ', '-', $category->name) }}" class="panel-collapse collapse">
-                            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="nav nav-tabs tabs-left">
+                            @foreach ($categories as $index=>$category)
+                            <li class="{{ $index == 0 ? 'active' : '' }}">
+                                <a href="#{{ str_replace(' ', '-', $category->name) }}"
+                                    data-toggle="tab">{{ $category->name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content">
+                            @foreach ($categories as $index=>$category)
+                            <div class="tab-pane fade {{ $index == 0 ? 'active in' : '' }}"
+                                id="{{ str_replace(' ', '-', $category->name) }}">
                                 @if ($category->products->count() > 0)
-                                <table class="table table-hover">
+                                <table class="table table-bordered table-hover">
                                     <tr>
                                         <th>@lang('site.name')</th>
                                         <th>@lang('site.stock')</th>
@@ -45,17 +63,17 @@
                                     @endforeach
                                 </table>
                                 @else
-                                <h5>@lang('site.no_records')</h5>
+                                <h5>@lang('site.no_products')</h5>
                                 @endif
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
@@ -73,6 +91,7 @@
                                     <th>@lang('site.product')</th>
                                     <th>@lang('site.quantity')</th>
                                     <th>@lang('site.price')</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody class="order-list">
@@ -83,42 +102,49 @@
                                 class="fa fa-plus"></i> @lang('site.add_order')</button>
                     </form>
                 </div>
-                @if ($client->orders->count() > 0)
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h3 class="box-title" style="margin-bottom: 10px">@lang('site.previous_orders')
-                            <small>{{ $orders->total() }}</small>
-                        </h3>
-                    </div>
-                    <div class="box-body">
-                        @foreach ($orders as $order)
-                        <div class="panel-group">
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse"
-                                            href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toFormattedDateString() }}</a>
-                                    </h4>
-                                </div>
-                                <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="list-group">
-                                            @foreach ($order->products as $product)
-                                            <li class="list-group-item">{{ $product->name }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        {{ $orders->links() }}
-                    </div>
-                </div>
-                @endif
             </div>
         </div>
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-7"></div>
+    <div class="col-md-5">
+        <div class="portlet box blue">
+            @if ($client->orders->count() > 0)
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-reorder"></i>@lang('site.previous_orders')
+                    <small>({{ $orders->total() }})</small></div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <ul class="nav nav-tabs tabs-left">
+                            @foreach ($orders as $index=>$order)
+                            <li class="{{ $index == 0 ? 'active' : '' }}">
+                                <a href="#{{ $order->created_at->format('d-m-Y-s') }}"
+                                    data-toggle="tab">{{ $order->created_at->toFormattedDateString() }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="tab-content">
+                            @foreach ($orders as $index=>$category)
+                            <div class="tab-pane fade {{ $index == 0 ? 'active in' : '' }}"
+                                id="{{ $order->created_at->format('d-m-Y-s') }}">
+                                @foreach ($order->products as $product)
+                                <li class="list-group-item">{{ $product->name }}</li>
+                                @endforeach
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
 @endsection

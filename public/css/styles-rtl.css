@@ -81,3 +81,18 @@
 .control-label {
     font-weight: 700;
 }
+
+.tabs-left.nav-tabs>li>a:focus {
+    background-color: #36c6d3;
+    color: #fff;
+}
+
+.nav-tabs>li.active>a {
+    background-color: #36c6d3;
+    color: #fff;
+}
+
+.tabs-left.nav-tabs>li>a:hover {
+    background-color: #36c6d3;
+    color: #fff;
+}

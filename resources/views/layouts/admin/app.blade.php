@@ -181,7 +181,17 @@
         <script src="{{ asset('/admin_files/metronic-ltr/assets/global/plugins/icheck/icheck.min.js') }}"></script>
         <script src="{{ asset('/admin_files/metronic-ltr/assets/pages/scripts/form-icheck.min.js') }}"></script>
 
-        {{--custom js--}}
+        {{-- jQuery Number --}}
+        <script src="{{ asset('admin_files/js/jquery.number.min.js') }}"></script>
+
+        {{-- Print This --}}
+        <script src="{{ asset('admin_files/js/printThis.js') }}"></script>
+
+        {{-- Morris --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        {{-- <script src="{{ asset('admin_files/plugins/morris/morris.min.js') }}"></script> --}}
+
+        {{-- Custom js --}}
         <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
         <script src="{{ asset('admin_files/js/custom/order.js') }}"></script>
 
@@ -191,29 +201,29 @@
 
         <script>
             $(document).ready(function () {
-        //Delete
-        $('.delete').click(function (e) {
-            var that = $(this)
-            e.preventDefault();
-            var n = new Noty({
-                text: "@lang('site.confirm_delete')",
-                type: "alert",
-                killer: true,
-                buttons: [
-                    Noty.button("@lang('site.yes')", 'btn btn-danger mr-2', function () {
-                        that.closest('form').submit();
-                    }),
-                    Noty.button("@lang('site.no')", 'btn btn-light mr-2', function () {
-                        n.close();
-                    })
-                ]
+            //Delete
+            $('.delete').click(function (e) {
+                var that = $(this)
+                e.preventDefault();
+                var n = new Noty({
+                    text: "@lang('site.confirm_delete')",
+                    type: "alert",
+                    killer: true,
+                    buttons: [
+                        Noty.button("@lang('site.yes')", 'btn btn-danger mr-2', function () {
+                            that.closest('form').submit();
+                        }),
+                        Noty.button("@lang('site.no')", 'btn btn-light mr-2', function () {
+                            n.close();
+                        })
+                    ]
+                });
+                n.show();
             });
-            n.show();
-        });
 
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
         
-    });
+        });
         </script>
         @stack('scripts')
 

@@ -31,6 +31,7 @@ return [
 
     'no_data_found'             => 'No Data Found',
     'no_records'                => 'No Records',
+    'no_products'               => 'No Products',
 
     'clients'                   => 'Clients',
     'client'                    => 'Client',
