@@ -117,37 +117,36 @@
     <div class="col-md-7"></div>
     <div class="col-md-5">
         @if ($client->orders->count() > 0)
-        <div class="portlet box blue">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-reorder"></i>@lang('site.previous_orders')
-                    <small>({{ $orders->total() }})</small></div>
+                    <small>({{ $orders->total() }})</small>
+                </div>
             </div>
             <div class="portlet-body">
-                <div class="row">
-                    <div class="col-md-5 active-tab">
-                        <ul class="nav nav-tabs tabs-left">
-                            @foreach ($orders as $index=>$order)
-                            <li class="{{ $index == 0 ? 'active' : '' }}">
-                                <a href="#{{ $order->created_at->format('d-m-Y-s') }}"
-                                    data-toggle="tab">{{ $order->created_at->toFormattedDateString() }}</a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="tab-content">
-                            @foreach ($orders as $index=>$category)
-                            <div class="tab-pane fade {{ $index == 0 ? 'active in' : '' }}"
-                                id="{{ $order->created_at->format('d-m-Y-s') }}">
-                                @foreach ($order->products as $product)
-                                <li class="list-group-item">{{ $product->name }}</li>
-                                @endforeach
+                @foreach ($orders as $order)
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse"
+                                    href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toDayDateTimeString() }}</a>
+                            </h4>
+                        </div>
+                        <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    @foreach ($order->products as $product)
+                                    <li class="list-group-item">{{ $product->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
+                @endforeach
+                {{ $orders->links() }}
             </div>
         </div>
         @endif

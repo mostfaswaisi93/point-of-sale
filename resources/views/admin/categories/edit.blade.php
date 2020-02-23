@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-actions">
                         <div class="btn-set pull-left">
-                            <button type="submit" class="btn blue"><i class="fa fa-plus"></i>
+                            <button type="submit" class="btn blue"><i class="fa fa-edit"></i>
                                 @lang('site.edit')</button>
                         </div>
                     </div>

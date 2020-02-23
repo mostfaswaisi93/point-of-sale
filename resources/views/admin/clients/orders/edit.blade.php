@@ -81,9 +81,10 @@
             </div>
             <div class="portlet-body">
                 <div class="table-scrollable">
-                    <form action="{{ route('admin.clients.orders.store', $client->id) }}" method="post">
+                    <form action="{{ route('admin.clients.orders.update',
+                    ['order' => $order->id, 'client' => $client->id]) }}" method="post">
                         @csrf
-                        @method('post')
+                        @method('put')
                         @include('partials._errors')
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -95,17 +96,35 @@
                                 </tr>
                             </thead>
                             <tbody class="order-list">
+                                @foreach ($order->products as $product)
+                                <tr>
+                                    <td>{{ $product->name }}</td>
+                                    <td><input type="number" name="products[{{ $product->id }}][quantity]"
+                                            data-price="{{ number_format($product->sale_price, 2) }}"
+                                            class="form-control input-sm product-quantity" min="1"
+                                            value="{{ $product->pivot->quantity }}"></td>
+                                    <td class="product-price">
+                                        {{ number_format($product->sale_price * $product->pivot->quantity, 2) }}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm remove-product-btn"
+                                            data-id="{{ $product->id }}"><span class="fa fa-trash"></span></button>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th colspan="4">
-                                        <h4>@lang('site.total') : <span class="total-price">0</span></h4>
+                                        <h4>@lang('site.total') :
+                                            <span class="total-price">{{ number_format($order->total_price, 2) }}</span>
+                                        </h4>
                                     </th>
                                 </tr>
                             </tfoot>
                         </table>
-                        <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i
-                                class="fa fa-plus"></i> @lang('site.add_order')</button>
+                        <button class="btn btn-primary btn-block" id="form-btn"><i class="fa fa-edit"></i>
+                            @lang('site.edit_order')</button>
                     </form>
                 </div>
             </div>
@@ -117,37 +136,36 @@
     <div class="col-md-7"></div>
     <div class="col-md-5">
         @if ($client->orders->count() > 0)
-        <div class="portlet box blue">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-reorder"></i>@lang('site.previous_orders')
-                    <small>({{ $orders->total() }})</small></div>
+                    <small>({{ $orders->total() }})</small>
+                </div>
             </div>
             <div class="portlet-body">
-                <div class="row">
-                    <div class="col-md-5 active-tab">
-                        <ul class="nav nav-tabs tabs-left">
-                            @foreach ($orders as $index=>$order)
-                            <li class="{{ $index == 0 ? 'active' : '' }}">
-                                <a href="#{{ $order->created_at->format('d-m-Y-s') }}"
-                                    data-toggle="tab">{{ $order->created_at->toFormattedDateString() }}</a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="tab-content">
-                            @foreach ($orders as $index=>$category)
-                            <div class="tab-pane fade {{ $index == 0 ? 'active in' : '' }}"
-                                id="{{ $order->created_at->format('d-m-Y-s') }}">
-                                @foreach ($order->products as $product)
-                                <li class="list-group-item">{{ $product->name }}</li>
-                                @endforeach
+                @foreach ($orders as $order)
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse"
+                                    href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toDayDateTimeString() }}</a>
+                            </h4>
+                        </div>
+                        <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    @foreach ($order->products as $product)
+                                    <li class="list-group-item">{{ $product->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
+                @endforeach
+                {{ $orders->links() }}
             </div>
         </div>
         @endif

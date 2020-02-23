@@ -76,7 +76,7 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
                                 <td><a href="{{ route('admin.products.index', ['category_id' => $category->id]) }}"
-                                        class="btn btn-info btn-sm">@lang('site.related_products')</a></td>
+                                        class="btn btn-primary btn-sm">@lang('site.related_products')</a></td>
                                 <td>{{ $category->created_at->format('m-d-Y') }}</td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_categories'))

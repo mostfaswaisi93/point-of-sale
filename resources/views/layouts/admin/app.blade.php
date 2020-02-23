@@ -20,6 +20,9 @@
     {{--noty--}}
     <link rel="stylesheet" href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.css') }}">
     <script src="{{ asset('admin_files/metronic-ltr/assets/global/plugins/noty/noty.min.js') }}"></script>
+
+    <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/morris/morris.css') }}" rel="stylesheet" />
+
     @if (app()->getLocale() == 'ar')
     <link href="{{ asset('admin_files/metronic-rtl/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css') }}"
         rel="stylesheet" />
@@ -223,7 +226,7 @@
 
         {{-- Morris --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        {{-- <script src="{{ asset('admin_files/plugins/morris/morris.min.js') }}"></script> --}}
+        <script src="{{ asset('admin_files/metronic-ltr/assets/global/plugins/morris/morris.min.js') }}"></script>
 
         {{-- Custom js --}}
         <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>

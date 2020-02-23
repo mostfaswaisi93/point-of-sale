@@ -34,7 +34,7 @@ return [
     'no_products'               => 'لا يوجد منتجات لهذا القسم',
 
     'clients'                   => 'الزبائن',
-    'client'                    => 'الزبون',
+    'client'                    => 'زبون',
     'client_name'               => 'اسم الزبون',
     'phone'                     => 'التلفون',
     'address'                   => 'العنوان',
@@ -60,12 +60,12 @@ return [
     'description'               => 'الوصف',
     'products_count'            => 'عدد المنتجات',
     'related_products'          => 'المنتجات المرتبطة',
-    'category'                  => 'القسم',
+    'category'                  => 'قسم',
     'show_products'             => 'عرض المنتجات',
     'created_at'                => 'تاريخ الإنشاء',
 
     'products'                  => 'المنتجات',
-    'product'                   => 'المنتج',
+    'product'                   => 'منتج',
     'quantity'                  => 'الكمية',
     'total'                     => 'المجموع',
     'purchase_price'            => 'سعر الشراء',
@@ -75,6 +75,7 @@ return [
     'profit_percent'            => 'المكسب',
 
     'all_rights'                => 'جميع الحقوق محفوظة',
+    'sales_graph'               => 'مخطط المبيعات',
 
     'ar'                        => [
         'name'          => 'الاسم باللغة العربية',

@@ -56,6 +56,48 @@
 
 <div class="clearfix"></div>
 
-<hr>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-bar-chart font-green"></i>
+                    <span class="caption-subject font-green bold uppercase">@lang('site.sales_graph')</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="chart" id="line-chart" style="height: 250px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
+
+@push('scripts')
+
+<script>
+    // Line Chart
+        var line = new Morris.Line({
+            element: 'line-chart',
+            resize: true,
+            data: [
+                @foreach ($sales_data as $data)
+                {
+                    ym: "{{ $data->year }}-{{ $data->month }}", sum: "{{ $data->sum }}"
+                },
+                @endforeach
+            ],
+            xkey: 'ym',
+            ykeys: ['sum'],
+            labels: ['@lang('site.total')'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            gridStrokeWidth: 0.4,
+            pointSize: 4,
+            gridTextFamily: 'Open Sans',
+            gridTextSize: 10
+        });
+</script>
+
+@endpush

@@ -75,6 +75,7 @@ return [
     'profit_percent'            => 'Profit Percent',
 
     'all_rights'                => 'All Rights are Saved',
+    'sales_graph'               => 'Sales Graph',
 
     'ar'                        => [
         'name'          => 'Arabic Name',
