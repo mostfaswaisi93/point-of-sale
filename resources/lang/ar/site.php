@@ -15,6 +15,7 @@ return [
     'show'                      => 'عرض',
     'loading'                   => 'جاري التحميل',
     'print'                     => 'طباعة',
+    'close'                     => 'أغلق',
 
     'confirm_delete'            => 'تأكيد الحذف',
     'yes'                       => 'نعم',

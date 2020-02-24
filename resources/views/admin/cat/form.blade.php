@@ -8,19 +8,6 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <div class="portlet-body form">
-                    @include('partials._errors')
-                    <form action="{{ route('admin.cat.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('post')
-                        <div class="form-actions">
-                            <div class="btn-set pull-left">
-                                <button type="submit" class="btn blue"><i class="fa fa-plus"></i>
-                                    @lang('site.add')</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 @include('partials._errors')
                 <form method="post" id="categoryForm" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
@@ -40,7 +27,7 @@
                         <button type="submit" class="btn btn-primary" id="action_button" name="action_button"
                             value="Add"><i class="fa fa-plus"></i>
                             @lang('site.add')</button>
-                        <button type="button" class="btn blue" data-dismiss="modal">
+                        <button type="button" class="btn white" data-dismiss="modal">
                             <i class="fa fa-times" aria-hidden="true"></i>
                             {{ trans('site.close') }}</button>
                     </div>

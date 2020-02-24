@@ -23,8 +23,9 @@ class WelcomeController extends Controller
         $sales_data = Order::select(
             DB::raw('YEAR(created_at) as year'),
             DB::raw('MONTH(created_at) as month'),
+            DB::raw('DAY(created_at) as day'),
             DB::raw('SUM(total_price) as sum')
-        )->groupBy('month')->get();
+        )->groupBy('day')->get();
 
         return view('admin.welcome', compact(
             'categories_count',

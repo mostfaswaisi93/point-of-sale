@@ -36,29 +36,17 @@
                 </form>
             </div>
             <div class="portlet-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="btn-group">
-                            @if (auth()->user()->hasPermission('create_categories'))
-                            <a href="{{ route('admin.categories.create') }}" class="btn sbold green"><i
-                                    class="fa fa-plus"></i>
-                                @lang('site.add') @lang('site.category')</a>
-                            @else
-                            <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
-                                @lang('site.add') @lang('site.category')</a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <br>
                 <div class="table-toolbar">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="btn-group">
-                                <button name="create_category" id="create_category"
-                                    class="btn green">{{ trans('site.add') }}
-                                    <i class="fa fa-plus"></i>
-                                </button>
+                            <div class="btn-group" name="create_category" id="create_category">
+                                @if (auth()->user()->hasPermission('create_categories'))
+                                <a class="btn sbold green"><i class="fa fa-plus"></i>
+                                    @lang('site.add') @lang('site.category')</a>
+                                @else
+                                <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
+                                    @lang('site.add') @lang('site.category')</a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -66,9 +54,12 @@
                 <table class="table table-striped table-hover table-bordered" id="data-table">
                     <thead>
                         <tr>
-                            <th> # </th>
-                            <th> {{ trans('site.name') }} </th>
-                            <th width="15%"> {{ trans('site.action') }} </th>
+                            <th>#</th>
+                            <th>@lang('site.name')</th>
+                            <th>@lang('site.products_count')</th>
+                            <th>@lang('site.related_products')</th>
+                            <th>@lang('site.created_at')</th>
+                            <th>@lang('site.action')</th>
                         </tr>
                     </thead>
                 </table>
@@ -102,6 +93,9 @@
                     searchable: false,
                     orderable: false
                 },
+                { data: 'name', name: 'name' },
+                { data: 'name', name: 'name' },
+                { data: 'related_products', name: 'related_products' },
                 { data: 'name', name: 'name' },
                 { data: 'action', name: 'action', orderable: false }
             ]

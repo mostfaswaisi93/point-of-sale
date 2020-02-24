@@ -84,7 +84,7 @@
             data: [
                 @foreach ($sales_data as $data)
                 {
-                    ym: "{{ $data->year }}-{{ $data->month }}", sum: "{{ $data->sum }}"
+                    ym: "{{ $data->year }}-{{ $data->month }}-{{ $data->day }}", sum: "{{ $data->sum }}"
                 },
                 @endforeach
             ],
@@ -96,7 +96,8 @@
             gridStrokeWidth: 0.4,
             pointSize: 4,
             gridTextFamily: 'Open Sans',
-            gridTextSize: 10
+            gridTextSize: 10,
+            parseTime: false
         });
 </script>
 

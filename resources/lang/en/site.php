@@ -15,6 +15,7 @@ return [
     'show'                      => 'Show',
     'loading'                   => 'Loading',
     'print'                     => 'Print',
+    'close'                     => 'Close',
 
     'confirm_delete'            => 'Confirm Delete',
     'yes'                       => 'Yes',

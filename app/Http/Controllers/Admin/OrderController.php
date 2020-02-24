@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
+use App\Client;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,6 +18,14 @@ class OrderController extends Controller
         })->paginate(5);
 
         return view('admin.orders.index', compact('orders'));
+    }
+
+    public function create(Client $client)
+    {
+        $categories = Category::with('products')->get();
+        $orders = $client->orders()->with('products')->paginate(5);
+
+        return view('admin.orders.create', compact('client', 'categories', 'orders'));
     }
 
     public function products(Order $order)

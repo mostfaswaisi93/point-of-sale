@@ -13,6 +13,13 @@ class CatController extends Controller
     {
         if (request()->ajax()) {
             return datatables()->of(Category::get())
+                ->addColumn('related_products', function ($data) {
+                    $button = 
+                    '<a href="{{ route("admin.products.index", ["category_id" => $category->id]) }}"
+                    class="btn btn-primary btn-sm">@lang("site.related_products")</a>';
+                    return $button;
+                 })
+                 ->rawColumns(['related_products'])
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>';
                     $button .= '&nbsp;&nbsp;';
@@ -27,9 +34,9 @@ class CatController extends Controller
 
     public function store(Request $request)
     {
-        $rules = array(
-            'name' => 'required'
-        );
+        $rules = [];
+
+        $request->validate($rules);
 
         $error = Validator::make($request->all(), $rules);
 
@@ -38,6 +45,7 @@ class CatController extends Controller
         }
 
         Category::create($request->all());
+        session()->flash('success', __('site.added_successfully'));
         return response()->json(['success' => 'Data Added successfully.']);
     }
 
