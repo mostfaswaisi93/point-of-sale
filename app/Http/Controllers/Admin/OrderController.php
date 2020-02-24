@@ -20,12 +20,9 @@ class OrderController extends Controller
         return view('admin.orders.index', compact('orders'));
     }
 
-    public function create(Client $client)
+    public function create()
     {
-        $categories = Category::with('products')->get();
-        $orders = $client->orders()->with('products')->paginate(5);
-
-        return view('admin.orders.create', compact('client', 'categories', 'orders'));
+        return view('admin.clients.create');
     }
 
     public function products(Order $order)

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    //Add Product btn
+    // Add Product btn
     $('.add-product-btn').on('click', function(e) {
 
         e.preventDefault();

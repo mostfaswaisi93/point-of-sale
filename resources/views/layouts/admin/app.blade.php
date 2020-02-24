@@ -66,6 +66,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
     <style>
+        .panel-heading {
+            background: #fff;
+        }
+
         .loader {
             border: 5px solid #f3f3f3;
             border-radius: 50%;

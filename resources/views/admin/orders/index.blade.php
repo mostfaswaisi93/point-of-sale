@@ -36,9 +36,18 @@
     <div class="row">
         <div class="col-md-6">
             <div class="btn-group">
+                @if (auth()->user()->hasPermission('create_clients'))
+                <a href="#" class="btn sbold green addClient"><i class="fa fa-plus"></i>
+                    @lang('site.add') @lang('site.client')</a>
+                @else
+                <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
+                    @lang('site.add') @lang('site.client')</a>
+                @endif
+            </div>
+            <div class="btn-group">
                 {{-- @if (auth()->user()->hasPermission('create_orders'))
-                <a href="{{ route('admin.orders.create'') }}" class="btn sbold green"><i class="fa fa-plus"></i>
-                    @lang('site.add') @lang('site.order')</a>
+                <a href="{{ route('admin.clients.create'') }}" class="btn sbold green"><i class="fa fa-plus"></i>
+                @lang('site.add') @lang('site.order')</a>
                 @else
                 <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
                     @lang('site.add') @lang('site.order')</a>
@@ -131,4 +140,19 @@
     </div>
 </div>
 
+@include('admin.orders._createClient')
+
 @endsection
+
+@push('scripts')
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.addClient', function() {
+            $('#clientModal').modal('show');
+            $('.modal-title').text('@lang('site.add') @lang('site.client')');
+        });
+    });
+</script>
+
+@endpush
