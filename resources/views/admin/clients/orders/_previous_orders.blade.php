@@ -22,9 +22,34 @@
                             <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul class="list-group">
-                                        @foreach ($order->products as $product)
-                                        <li class="list-group-item">{{ $product->name }}</li>
-                                        @endforeach
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>@lang('site.name')</th>
+                                                    <th>@lang('site.quantity')</th>
+                                                    <th>@lang('site.price')</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($order->products as $product)
+                                                <tr>
+                                                    <td>{{ $product->name }}</td>
+                                                    <td>{{ $product->pivot->quantity }}</td>
+                                                    <td>{{ number_format($product->sale_price, 2) }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="4">
+                                                        <h4>@lang('site.total') :
+                                                            <span
+                                                                class="total-price">{{ number_format($order->total_price, 2) }}</span>
+                                                        </h4>
+                                                    </th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
                                     </ul>
                                 </div>
                             </div>

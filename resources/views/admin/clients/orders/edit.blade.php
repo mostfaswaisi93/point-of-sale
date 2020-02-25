@@ -15,9 +15,27 @@
     </ul>
 </div>
 
+<div class="table-toolbar">
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            @if ($client->orders->count() > 0)
+            <div class="portlet-title">
+                <div class="btn-group">
+                    <a href="#" class="btn sbold blue showPOrders"><i class="fa fa-reorder"></i>
+                        @lang('site.show') @lang('site.previous_orders')
+                        <small>({{ $orders->total() }})</small></a>
+                </div>
+            </div>
+            @include('admin.clients.orders._previous_orders')
+            @endif
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-7">
-        <div class="portlet box blue">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-product-hunt"></i>@lang('site.show_products')</div>
@@ -132,44 +150,17 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-7"></div>
-    <div class="col-md-5">
-        @if ($client->orders->count() > 0)
-        <div class="portlet box green">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-reorder"></i>@lang('site.previous_orders')
-                    <small>({{ $orders->total() }})</small>
-                </div>
-            </div>
-            <div class="portlet-body">
-                @foreach ($orders as $order)
-                <div class="panel-group">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse"
-                                    href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toDayDateTimeString() }}</a>
-                            </h4>
-                        </div>
-                        <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <ul class="list-group">
-                                    @foreach ($order->products as $product)
-                                    <li class="list-group-item">{{ $product->name }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                {{ $orders->links() }}
-            </div>
-        </div>
-        @endif
-    </div>
-</div>
-
 @endsection
+
+@push('scripts')
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.showPOrders', function() {
+            $('#showModal').modal('show');
+            $('.modal-title').text('@lang('site.previous_orders')');
+        });
+    });
+</script>
+
+@endpush

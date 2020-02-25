@@ -10,28 +10,39 @@
             </div>
             <div class="modal-body">
                 <span id="form_result"></span>
-                {{-- @include('partials._errors') --}}
-                <form method="post" id="clientForm" class="form-horizontal" enctype="multipart/form-data">
+                <form method="post" id="clientForm" class="form-horizontal">
                     @csrf
                     <div class="form-group">
-                        <label for="name" class="control-label col-md-2">@lang('site.name'): </label>
+                        <label class="control-label col-md-2">@lang('site.name'): </label>
                         <div class="col-md-9">
-                            <input type="text" name="name" id="name" class="form-control"
-                                placeholder="@lang('site.e_name')" />
+                            <input type="text" name="name" class="form-control" />
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="action" id="action" />
-                        <input type="hidden" name="hidden_id" id="hidden_id" />
-                        <button type="submit" class="btn btn-primary" id="action_button" name="action_button"
-                            value="Add"><i class="fa fa-plus"></i>
-                            @lang('site.add')</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            @lang('site.close')</button>
-                    </div>
-                </form>
+                    @for ($i = 0; $i < 2; $i++) <div class="form-group">
+                        <label class="control-label col-md-2">@lang('site.phone'): </label>
+                        <div class="col-md-9">
+                            <input type="text" name="phone[]" class="form-control" />
+                        </div>
             </div>
+            @endfor
+            <div class="form-group">
+                <label class="control-label col-md-2">@lang('site.address'): </label>
+                <div class="col-md-9">
+                    <input type="text" name="address" class="form-control" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="action" id="action" />
+                <input type="hidden" name="hidden_id" id="hidden_id" />
+                <button type="submit" class="btn btn-primary" id="action_button" name="action_button" value="Add"><i
+                        class="fa fa-plus"></i>
+                    @lang('site.add')</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    @lang('site.close')</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>

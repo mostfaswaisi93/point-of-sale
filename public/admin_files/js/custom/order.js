@@ -49,7 +49,7 @@ $(document).ready(function() {
     $('body').on('keyup change', '.product-quantity', function() {
 
         var quantity = Number($(this).val()); //2
-        var unitPrice = parseFloat($(this).data('price').replace(/,/g, '')); //150
+        var unitPrice = parseFloat($(this).data('price')); //150
         console.log(unitPrice);
         $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
         calculateTotal();
@@ -95,11 +95,11 @@ function calculateTotal() {
 
     $('.order-list .product-price').each(function(index) {
 
-        price += parseFloat($(this).html().replace(/,/g, ''));
+        price += parseFloat($(this).html());
 
     });
 
-    $('.total-price').html($.number(price, 2));
+    $('.total-price').html(Math.round(price));
 
     // Check if Price > 0
     if (price > 0) {

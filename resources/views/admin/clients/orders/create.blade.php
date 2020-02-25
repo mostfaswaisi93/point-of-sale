@@ -22,7 +22,7 @@
             @if ($client->orders->count() > 0)
             <div class="portlet-title">
                 <div class="btn-group">
-                    <a href="#" class="btn sbold green showPOrders"><i class="fa fa-reorder"></i>
+                    <a href="#" class="btn sbold blue showPOrders"><i class="fa fa-reorder"></i>
                         @lang('site.show') @lang('site.previous_orders')
                         <small>({{ $orders->total() }})</small></a>
                 </div>
@@ -35,7 +35,7 @@
 
 <div class="row">
     <div class="col-md-7">
-        <div class="portlet box blue">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-product-hunt"></i>@lang('site.show_products')</div>

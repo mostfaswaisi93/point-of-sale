@@ -37,7 +37,7 @@
         <div class="col-md-6">
             <div class="btn-group">
                 @if (auth()->user()->hasPermission('create_clients'))
-                <a href="#" class="btn sbold green addClient"><i class="fa fa-plus"></i>
+                <a href="#" class="btn sbold green" id="create_client" name="create_client"><i class="fa fa-plus"></i>
                     @lang('site.add') @lang('site.client')</a>
                 @else
                 <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
@@ -148,11 +148,53 @@
 
 <script>
     $(document).ready(function() {
-        $(document).on('click', '.addClient', function() {
-            $('#clientModal').modal('show');
+
+        $('#create_client').click(function() {
             $('.modal-title').text('@lang('site.add') @lang('site.client')');
+            $('#action_button').val('Add');
+            $('#clientForm').trigger('reset');
+            $('#action').val('Add');
+            $('#clientModal').modal('show');
         });
+
+        $('#clientForm').on('submit', function(event) {
+            event.preventDefault();
+            if ($('#action').val() == 'Add') {
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "{{ route('admin.clients.store') }}",
+                    method: "POST",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function(data) {
+                        var html = '';
+                        if (data.errors) {
+                            html = '<div class="alert alert-danger">';
+                            for (var count = 0; count < data.errors.length; count++) {
+                                html += '<p>' + data.errors[count] + '</p>';
+                            }
+                            html += '</div>';
+                        }
+                        if (data.success) {
+                            $('#clientForm')[0].reset();
+                            window.location.reload();
+                            // $('#data-table').DataTable().ajax.reload();
+                            $('#clientModal').modal('hide');
+                            toastr.success('@lang('admin.added_done')!', '@lang('admin.success')!');
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            }
+
+        });
+
+
     });
+
 </script>
 
 @endpush

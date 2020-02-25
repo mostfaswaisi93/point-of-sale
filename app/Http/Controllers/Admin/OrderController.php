@@ -7,6 +7,7 @@ use App\Client;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class OrderController extends Controller
 {
@@ -42,6 +43,31 @@ class OrderController extends Controller
 
         $order->delete();
         session()->flash('success', __('site.deleted_successfully'));
+        return redirect()->route('admin.orders.index');
+    }
+
+    public function store(Client $client)
+    {
+        $rules = array(
+            'name'      => 'required',
+            'phone'     => 'required|array|min:1',
+            'phone.0'   => 'required',
+            'address'   => 'required',
+        );
+
+        $error = Validator::make($client->all(), $rules);
+
+        if ($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $client_data = $client->all();
+        $client_data['phone'] = array_filter($client->phone);
+
+        dd($client_data);
+
+        Client::create($client_data);
+        session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.orders.index');
     }
 }

@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" />
     <link href="{{ asset('admin_files/metronic-ltr/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"
         rel="stylesheet" />
@@ -209,8 +211,6 @@
         <script src="{{ asset('/admin_files/metronic-ltr/assets/global/scripts/app.min.js') }}">
         </script>
         <script src="{{ asset('/admin_files/metronic-ltr/assets/pages/scripts/table-datatables-editable.min.js') }}">
-        </script>
-        <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/layout/scripts/layout.min.js') }}">
         </script>
         <script src="{{ asset('/admin_files/metronic-ltr/assets/layouts/layout/scripts/demo.min.js') }}">
         </script>
