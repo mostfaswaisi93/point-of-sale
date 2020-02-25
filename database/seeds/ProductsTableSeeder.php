@@ -13,8 +13,8 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'ar' => ['name' => $product, 'description' => $product . ' desc'],
                 'en' => ['name' => $product, 'description' => $product . ' desc'],
-                'purchase_price' => 120,
-                'sale_price' => 180,
+                'purchase_price' => 20,
+                'sale_price' => 20.25,
                 'stock' => 150,
             ]);
         }
@@ -23,8 +23,8 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 2,
                 'ar' => ['name' => $product, 'description' => $product . ' desc'],
                 'en' => ['name' => $product, 'description' => $product . ' desc'],
-                'purchase_price' => 30,
-                'sale_price' => 40,
+                'purchase_price' => 100,
+                'sale_price' => 100.25,
                 'stock' => 120,
             ]);
         }

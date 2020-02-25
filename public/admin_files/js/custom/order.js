@@ -61,14 +61,7 @@ $(document).ready(function() {
 
     });
 
-    // $('body').on('keyup change', '.discount', function() {
 
-    //     var quantity = Number($(this).val()); //2
-    //     var unitPrice = parseFloat($(this).data('price')); //150
-    //     console.log(unitPrice);
-    //     $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
-
-    // });
 
     // All Order Products
     $('.order-products').on('click', function(e) {
@@ -158,7 +151,19 @@ function calculateTotal() {
 }
 
 function discount() {
-    num1 = document.getElementById("total-price").value;
-    num2 = document.getElementById("discount").value;
-    document.getElementById("result").innerHTML = num1 - num2;
+    // var sssss = Number($(this).val()); //2
+
+    // num1 = document.getElementById("total-price").value;
+    // valDicount = document.getElementById("discount").value;
+
+
+    // document.getElementById("result").innerHTML = num1 - valDicount;
+    alert("HHH");
 }
+
+
+// $('body').on('onkeypress', '.discount', function() {
+
+//     discount();
+
+// });

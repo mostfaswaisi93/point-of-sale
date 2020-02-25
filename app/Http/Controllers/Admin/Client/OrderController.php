@@ -60,10 +60,12 @@ class OrderController extends Controller
         $order->products()->attach($request->products);
 
         $total_price = 0;
+        $items = 0;
 
         foreach ($request->products as $id => $quantity) {
 
             $product = Product::FindOrFail($id);
+            $items += round($product->sale_price * $quantity['quantity']);
             $total_price += $product->sale_price * $quantity['quantity'];
 
             $product->update([
@@ -72,6 +74,7 @@ class OrderController extends Controller
         }
 
         $order->update([
+            'items' => $items,
             'total_price' => $total_price
         ]);
     }

@@ -124,7 +124,8 @@
                                 {{-- <tr id="discount"> --}}
                                 <tr>
                                     <th>@lang('site.discount')</th>
-                                    <th><input type="number" name="" class="form-control discount" id="discount"></th>
+                                    <th><input type="number" name="" class="form-control"
+                                            onkeypress="discount()" id="discount"></th>
                                 </tr>
                                 <tr>
                                     <th>@lang('site.after_discount')</th>
@@ -138,26 +139,26 @@
                         </table>
                         <div class="btn-style">
                             <div class="btn-group">
-                                <a class="btn btn-success btn-sm">
+                                <button class="btn btn-success btn-sm print-btn">
                                     <i class="fa fa-save"></i>
                                     <i class="fa fa-print"></i> <br> @lang('site.save_print')
-                                </a>
+                                </button>
                             </div>
                             <div class="btn-group">
-                                <a class="btn btn-primary btn-sm btn-block disabled" id="add-order-form-btn">
-                                    <i class="fa fa-save"></i> <br> @lang('site.add')
-                                </a>
+                                <button class="btn btn-primary btn-sm btn-block disabled" id="add-order-form-btn">
+                                    <i class="fa fa-save"></i> <br> @lang('site.add_order')
+                                </button>
                             </div>
                             <div class="btn-group">
-                                <a href="{{ route('admin.clients.orders.create', $client->id) }}"
+                                <button href="{{ route('admin.clients.orders.create', $client->id) }}"
                                     class="btn btn-warning btn-sm" target="_blank">
                                     <i class="fa fa-file-text"></i> <br> @lang('site.new_order')
-                                </a>
+                                </button>
                             </div>
                             <div class="btn-group">
-                                <a class="btn btn-danger btn-sm print-before">
+                                <button class="btn btn-danger btn-sm print-before">
                                     <i class="fa fa-print"></i> <br>
-                                    @lang('site.print')</a>
+                                    @lang('site.print')</button>
                             </div>
                         </div>
                     </form>

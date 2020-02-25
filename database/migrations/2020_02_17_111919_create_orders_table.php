@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('client_id')->unsigned()->onDelete('cascade');
+            $table->double('items', 8, 2)->nullable();
             $table->double('total_price', 8, 2)->nullable();
             $table->timestamps();
         });

@@ -23,4 +23,9 @@
         </tbody>
     </table>
 </div>
-<button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
+
+<div class="btn-style" style="text-align: center;">
+    <div class="btn-group">
+        <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
+    </div>
+</div>

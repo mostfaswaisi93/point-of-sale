@@ -131,7 +131,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="portlet box blue">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-product-hunt"></i>@lang('site.show_products')</div>

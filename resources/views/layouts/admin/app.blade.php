@@ -82,7 +82,7 @@
 
 
 
-        .btn-style .btn-group a {
+        .btn-style .btn-group button {
             width: 110px;
             height: 50px;
         }
