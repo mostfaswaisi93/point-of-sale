@@ -21,9 +21,12 @@ class OrderController extends Controller
         return view('admin.orders.index', compact('orders'));
     }
 
-    public function create()
+    public function create(Client $client)
     {
-        return view('admin.clients.create');
+        $categories = Category::with('products')->get();
+        $orders = $client->orders()->with('products')->paginate(5);
+        
+        return view('admin.orders.create', compact('client', 'categories', 'orders'));
     }
 
     public function products(Order $order)
@@ -46,28 +49,28 @@ class OrderController extends Controller
         return redirect()->route('admin.orders.index');
     }
 
-    public function store(Client $client)
-    {
-        $rules = array(
-            'name'      => 'required',
-            'phone'     => 'required|array|min:1',
-            'phone.0'   => 'required',
-            'address'   => 'required',
-        );
+    // public function store(Client $client)
+    // {
+    //     $rules = array(
+    //         'name'      => 'required',
+    //         'phone'     => 'required|array|min:1',
+    //         'phone.0'   => 'required',
+    //         'address'   => 'required',
+    //     );
 
-        $error = Validator::make($client->all(), $rules);
+    //     $error = Validator::make($client->all(), $rules);
 
-        if ($error->fails()) {
-            return response()->json(['errors' => $error->errors()->all()]);
-        }
+    //     if ($error->fails()) {
+    //         return response()->json(['errors' => $error->errors()->all()]);
+    //     }
 
-        $client_data = $client->all();
-        $client_data['phone'] = array_filter($client->phone);
+    //     $client_data = $client->all();
+    //     $client_data['phone'] = array_filter($client->phone);
 
-        dd($client_data);
+    //     dd($client_data);
 
-        Client::create($client_data);
-        session()->flash('success', __('site.added_successfully'));
-        return redirect()->route('admin.orders.index');
-    }
+    //     Client::create($client_data);
+    //     session()->flash('success', __('site.added_successfully'));
+    //     return redirect()->route('admin.orders.index');
+    // }
 }

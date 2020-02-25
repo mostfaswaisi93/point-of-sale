@@ -77,6 +77,11 @@ return [
 
     'all_rights'                => 'جميع الحقوق محفوظة',
     'sales_graph'               => 'مخطط المبيعات',
+    'new_order'                 => 'طلب جديد',
+    'save_print'                => 'حفظ وطباعة',
+    'discount'                  => 'الخصم',
+    'after_discount'            => 'المبلغ بعد الخصم',
+    'amount_paid'               => 'المبلغ المدفوع',
 
     'ar'                        => [
         'name'          => 'الاسم باللغة العربية',

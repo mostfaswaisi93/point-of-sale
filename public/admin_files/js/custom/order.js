@@ -24,6 +24,10 @@ $(document).ready(function() {
         calculateTotal();
     });
 
+    // $('.add-product-btn').on('click', function(e) {
+    //     $('#discount').addClass("discountShow")
+    // });
+
     // Disabled btn
     $('body').on('click', '.disabled', function(e) {
 
@@ -51,10 +55,20 @@ $(document).ready(function() {
         var quantity = Number($(this).val()); //2
         var unitPrice = parseFloat($(this).data('price')); //150
         console.log(unitPrice);
+
         $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
         calculateTotal();
 
     });
+
+    // $('body').on('keyup change', '.discount', function() {
+
+    //     var quantity = Number($(this).val()); //2
+    //     var unitPrice = parseFloat($(this).data('price')); //150
+    //     console.log(unitPrice);
+    //     $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
+
+    // });
 
     // All Order Products
     $('.order-products').on('click', function(e) {
@@ -86,6 +100,35 @@ $(document).ready(function() {
 
     });
 
+    // Print Order - Before
+    $(document).on('click', '.print-before', function() {
+
+        $('.remove-product-btn').css('display', 'none');
+
+        $('#print-area').printThis();
+
+        // printBTN();
+
+    });
+
+
+    // function printBTN() {
+    //     var content = document.getElementById(".print-before-area").innerHTML;
+
+
+    //     mywindow.document.write("<html><head><title>Print</title>");
+    //     mywindow.document.write("<style>" + text + "</style>");
+    //     mywindow.document.write("</head><body >");
+    //     mywindow.document.write(content);
+    //     mywindow.document.write("</body></html>");
+
+    //     mywindow.document.close();
+    //     mywindow.focus();
+    //     mywindow.print();
+    //     mywindow.close();
+    // }
+
+
 });
 
 // Calculate The Total
@@ -95,11 +138,11 @@ function calculateTotal() {
 
     $('.order-list .product-price').each(function(index) {
 
-        price += parseFloat($(this).html());
+        price += parseFloat($(this).html().replace(/,/g, ''));
 
     });
 
-    $('.total-price').html(Math.round(price));
+    $('#total-price').html(Math.round(price));
 
     // Check if Price > 0
     if (price > 0) {
@@ -112,4 +155,10 @@ function calculateTotal() {
 
     }
 
+}
+
+function discount() {
+    num1 = document.getElementById("total-price").value;
+    num2 = document.getElementById("discount").value;
+    document.getElementById("result").innerHTML = num1 - num2;
 }

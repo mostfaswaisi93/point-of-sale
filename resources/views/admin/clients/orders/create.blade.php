@@ -34,7 +34,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
@@ -103,7 +103,7 @@
                         @csrf
                         @method('post')
                         @include('partials._errors')
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover" id="print-before-area">
                             <thead>
                                 <tr>
                                     <th>@lang('site.product')</th>
@@ -114,16 +114,52 @@
                             </thead>
                             <tbody class="order-list">
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="4">
-                                        <h4>@lang('site.total') : <span class="total-price">0</span></h4>
-                                    </th>
-                                </tr>
-                            </tfoot>
                         </table>
-                        <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i
-                                class="fa fa-plus"></i> @lang('site.add_order')</button>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@lang('site.total')</th>
+                                    <th><span id="total-price">0</span></th>
+                                </tr>
+                                {{-- <tr id="discount"> --}}
+                                <tr>
+                                    <th>@lang('site.discount')</th>
+                                    <th><input type="number" name="" class="form-control discount" id="discount"></th>
+                                </tr>
+                                <tr>
+                                    <th>@lang('site.after_discount')</th>
+                                    <th><span id="discountResult">0</span></th>
+                                </tr>
+                                <tr>
+                                    <th>@lang('site.amount_paid')</th>
+                                    <th><input type="number" name="" class="form-control"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="btn-style">
+                            <div class="btn-group">
+                                <a class="btn btn-success btn-sm">
+                                    <i class="fa fa-save"></i>
+                                    <i class="fa fa-print"></i> <br> @lang('site.save_print')
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-primary btn-sm btn-block disabled" id="add-order-form-btn">
+                                    <i class="fa fa-save"></i> <br> @lang('site.add')
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <a href="{{ route('admin.clients.orders.create', $client->id) }}"
+                                    class="btn btn-warning btn-sm" target="_blank">
+                                    <i class="fa fa-file-text"></i> <br> @lang('site.new_order')
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-danger btn-sm print-before">
+                                    <i class="fa fa-print"></i> <br>
+                                    @lang('site.print')</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

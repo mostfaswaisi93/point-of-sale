@@ -40,7 +40,7 @@ class ClientController extends Controller
         Client::create($request_data);
 
         session()->flash('success', __('site.added_successfully'));
-        return redirect()->route('admin.clients.index');
+        return redirect()->route('admin.orders.index');
     }
 
     public function edit(Client $client)

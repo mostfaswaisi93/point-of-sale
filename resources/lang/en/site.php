@@ -77,6 +77,11 @@ return [
 
     'all_rights'                => 'All Rights are Saved',
     'sales_graph'               => 'Sales Graph',
+    'new_order'                 => 'New Order',
+    'save_print'                => 'Save - Print',
+    'discount'                  => 'Discount',
+    'after_discount'            => 'Total After Discount',
+    'amount_paid'               => 'Amount Paid',
 
     'ar'                        => [
         'name'          => 'Arabic Name',

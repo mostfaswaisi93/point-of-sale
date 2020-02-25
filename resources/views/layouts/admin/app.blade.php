@@ -72,6 +72,25 @@
             background: #fff;
         }
 
+        /* .discountShow{
+            display: contents;
+        }
+
+        .discountHide{
+            display: none;
+        } */
+
+
+
+        .btn-style .btn-group a {
+            width: 110px;
+            height: 50px;
+        }
+
+        .btn-style .btn-group {
+            padding: 4px;
+        }
+
         .loader {
             border: 5px solid #f3f3f3;
             border-radius: 50%;

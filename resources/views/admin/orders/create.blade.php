@@ -81,7 +81,7 @@
             </div>
             <div class="portlet-body">
                 <div class="table-scrollable">
-                    <form action="{{ route('admin.clients.orders.store', $client->id) }}" method="post">
+                    <form action="{{ route('admin.orders.store', $client->id) }}" method="post">
                         @csrf
                         @method('post')
                         @include('partials._errors')

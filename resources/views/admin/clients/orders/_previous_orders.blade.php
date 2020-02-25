@@ -12,11 +12,11 @@
                 <div class="portlet-body">
                     @foreach ($orders as $order)
                     <div class="panel-group">
-                        <div class="panel panel-content">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse"
-                                        href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toDayDateTimeString() }}</a>
+                                    <a data-toggle="collapse" href="#{{ $order->created_at->format('d-m-Y-s') }}"><i
+                                            class="fa fa-eye"></i> {{ $order->created_at->toDayDateTimeString() }}</a>
                                 </h4>
                             </div>
                             <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">

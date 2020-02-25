@@ -35,7 +35,7 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            <div class="btn-group">
+            {{-- <div class="btn-group">
                 @if (auth()->user()->hasPermission('create_clients'))
                 <a href="#" class="btn sbold green" id="create_client" name="create_client"><i class="fa fa-plus"></i>
                     @lang('site.add') @lang('site.client')</a>
@@ -43,19 +43,27 @@
                 <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
                     @lang('site.add') @lang('site.client')</a>
                 @endif
-            </div>
+            </div> --}}
             <div class="btn-group">
-                {{-- @if (auth()->user()->hasPermission('create_orders'))
-                <a href="{{ route('admin.clients.create'') }}" class="btn sbold green"><i class="fa fa-plus"></i>
-                @lang('site.add') @lang('site.order')</a>
+                @if (auth()->user()->hasPermission('create_clients'))
+                <a href="{{ route('admin.clients.create') }}" class="btn sbold green"><i class="fa fa-plus"></i>
+                    @lang('site.add') @lang('site.client')</a>
                 @else
                 <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
-                    @lang('site.add') @lang('site.order')</a>
-                @endif --}}
+                    @lang('site.add') @lang('site.client')</a>
+                @endif
+            </div>
+            <div class="btn-group">
+                @if (auth()->user()->hasPermission('create_orders'))
+                <a href="{{ route('admin.orders.create') }}" class="btn sbold green"><i class="fa fa-plus"></i>
+                @lang('site.add_order')</a>
+                @else
+                <a href="#" class="btn sbold green disabled"><i class="fa fa-plus"></i>
+                    @lang('site.add_order')</a>
+                @endif
             </div>
         </div>
     </div>
-
 </div>
 
 <div class="row">
