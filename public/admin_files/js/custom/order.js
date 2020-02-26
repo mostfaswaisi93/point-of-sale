@@ -24,10 +24,6 @@ $(document).ready(function() {
         calculateTotal();
     });
 
-    // $('.add-product-btn').on('click', function(e) {
-    //     $('#discount').addClass("discountShow")
-    // });
-
     // Disabled btn
     $('body').on('click', '.disabled', function(e) {
 
@@ -60,8 +56,6 @@ $(document).ready(function() {
         calculateTotal();
 
     });
-
-
 
     // All Order Products
     $('.order-products').on('click', function(e) {
@@ -100,27 +94,7 @@ $(document).ready(function() {
 
         $('#print-area').printThis();
 
-        // printBTN();
-
     });
-
-
-    // function printBTN() {
-    //     var content = document.getElementById(".print-before-area").innerHTML;
-
-
-    //     mywindow.document.write("<html><head><title>Print</title>");
-    //     mywindow.document.write("<style>" + text + "</style>");
-    //     mywindow.document.write("</head><body >");
-    //     mywindow.document.write(content);
-    //     mywindow.document.write("</body></html>");
-
-    //     mywindow.document.close();
-    //     mywindow.focus();
-    //     mywindow.print();
-    //     mywindow.close();
-    // }
-
 
 });
 
@@ -149,21 +123,3 @@ function calculateTotal() {
     }
 
 }
-
-function discount() {
-    // var sssss = Number($(this).val()); //2
-
-    // num1 = document.getElementById("total-price").value;
-    // valDicount = document.getElementById("discount").value;
-
-
-    // document.getElementById("result").innerHTML = num1 - valDicount;
-    alert("HHH");
-}
-
-
-// $('body').on('onkeypress', '.discount', function() {
-
-//     discount();
-
-// });

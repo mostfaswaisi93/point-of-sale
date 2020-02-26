@@ -37,6 +37,7 @@ return [
     'clients'                   => 'Clients',
     'client'                    => 'Client',
     'client_name'               => 'Client Name',
+    'choose_client'             => 'Choose a Client',
     'phone'                     => 'Phone',
     'address'                   => 'Address',
     'previous_orders'           => 'Previous Orders',

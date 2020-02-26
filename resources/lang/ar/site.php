@@ -37,6 +37,7 @@ return [
     'clients'                   => 'الزبائن',
     'client'                    => 'زبون',
     'client_name'               => 'اسم الزبون',
+    'choose_client'             => 'اختر زبون',
     'phone'                     => 'التلفون',
     'address'                   => 'العنوان',
     'previous_orders'           => 'الطلبات السابقة',

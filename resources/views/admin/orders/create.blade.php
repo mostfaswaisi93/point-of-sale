@@ -9,15 +9,15 @@
             <i class="fa fa-angle-left"></i>
         </li>
         <li>
-            <a href="/admin/clients">@lang('site.clients')</a>
+            <a href="/admin/orders">@lang('site.orders')</a>
             <i class="fa fa-circle"></i>
         </li>
     </ul>
 </div>
 
 <div class="row">
-    <div class="col-md-7">
-        <div class="portlet box blue">
+    <div class="col-md-6">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-product-hunt"></i>@lang('site.show_products')</div>
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
@@ -81,11 +81,21 @@
             </div>
             <div class="portlet-body">
                 <div class="table-scrollable">
-                    <form action="{{ route('admin.orders.store', $client->id) }}" method="post">
+                {{-- <form action="{{ route('admin.orders.store', $client->id) }}" method="post"> --}}
+                    <form method="post">
                         @csrf
                         @method('post')
                         @include('partials._errors')
-                        <table class="table table-bordered table-hover">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <select name="client_id" id="client_id" class="form-control">
+                                <option value="">@lang('site.choose_client')</option>
+                                @foreach ($client as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <table class="table table-bordered table-hover" id="print-before-area">
                             <thead>
                                 <tr>
                                     <th>@lang('site.product')</th>
@@ -96,60 +106,56 @@
                             </thead>
                             <tbody class="order-list">
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="4">
-                                        <h4>@lang('site.total') : <span class="total-price">0</span></h4>
-                                    </th>
-                                </tr>
-                            </tfoot>
                         </table>
-                        <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i
-                                class="fa fa-plus"></i> @lang('site.add_order')</button>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@lang('site.total')</th>
+                                    <th><span id="total-price">0</span></th>
+                                </tr>
+                                <tr>
+                                    <th>@lang('site.discount')</th>
+                                    <th><input type="number" name="" class="form-control"
+                                            id="discount"></th>
+                                </tr>
+                                <tr>
+                                    <th>@lang('site.after_discount')</th>
+                                    <th><span id="discountResult">0</span></th>
+                                </tr>
+                                <tr>
+                                    <th>@lang('site.amount_paid')</th>
+                                    <th><input type="number" name="" class="form-control"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="btn-style">
+                            <div class="btn-group">
+                                <button class="btn btn-success btn-sm print-btn">
+                                    <i class="fa fa-save"></i>
+                                    <i class="fa fa-print"></i> <br> @lang('site.save_print')
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-primary btn-sm btn-block disabled" id="add-order-form-btn">
+                                    <i class="fa fa-save"></i> <br> @lang('site.add_order')
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button href="{{ route('admin.orders.create') }}"
+                                    class="btn btn-warning btn-sm" target="_blank">
+                                    <i class="fa fa-file-text"></i> <br> @lang('site.new_order')
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-danger btn-sm print-before">
+                                    <i class="fa fa-print"></i> <br>
+                                    @lang('site.print')</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-7"></div>
-    <div class="col-md-5">
-        @if ($client->orders->count() > 0)
-        <div class="portlet box green">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-reorder"></i>@lang('site.previous_orders')
-                    <small>({{ $orders->total() }})</small>
-                </div>
-            </div>
-            <div class="portlet-body">
-                @foreach ($orders as $order)
-                <div class="panel-group">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse"
-                                    href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toDayDateTimeString() }}</a>
-                            </h4>
-                        </div>
-                        <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <ul class="list-group">
-                                    @foreach ($order->products as $product)
-                                    <li class="list-group-item">{{ $product->name }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                {{ $orders->links() }}
-            </div>
-        </div>
-        @endif
     </div>
 </div>
 
