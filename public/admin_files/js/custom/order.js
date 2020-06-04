@@ -22,6 +22,9 @@ $(document).ready(function() {
 
         // Calculate Total Price
         calculateTotal();
+
+        // Calculate Discount
+        calculateDiscount();
     });
 
     // Disabled btn
@@ -43,6 +46,9 @@ $(document).ready(function() {
         // Calculate Total Price
         calculateTotal();
 
+        // Calculate Discount
+        calculateDiscount();
+
     });
 
     // Change Product Quantity
@@ -50,10 +56,34 @@ $(document).ready(function() {
 
         var quantity = Number($(this).val()); //2
         var unitPrice = parseFloat($(this).data('price')); //150
+        // var unitPrice = parseFloat($(this).data('price').replace(/,/g, ''));
         console.log(unitPrice);
 
         $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
         calculateTotal();
+
+    });
+
+    // Change Discount
+    $('body').on('keyup change', '#discount', function() {
+
+        var itemsPrice = 0;
+
+        $('.price-list #items-price').each(function() {
+
+            itemsPrice += parseFloat($(this).html().replace(/,/g, ''));
+
+        });
+
+        // var itemsPrice = $("#items-price").html();
+        var discountVal = Number($(this).val());
+
+        afterDiscount = itemsPrice - (itemsPrice * discountVal / 100);
+
+        console.log(Math.round(afterDiscount));
+        console.log(afterDiscount);
+
+        $('#discountResult').html(Math.round(afterDiscount));
 
     });
 
@@ -103,13 +133,13 @@ function calculateTotal() {
 
     var price = 0;
 
-    $('.order-list .product-price').each(function(index) {
+    $('.order-list .product-price').each(function() {
 
         price += parseFloat($(this).html().replace(/,/g, ''));
 
     });
 
-    $('#total-price').html(Math.round(price));
+    $('#items-price').html($.number(price, 2));
 
     // Check if Price > 0
     if (price > 0) {
@@ -121,5 +151,21 @@ function calculateTotal() {
         $('#add-order-form-btn').addClass('disabled')
 
     }
+
+}
+
+
+function calculateDiscount() {
+
+    var discount = 0;
+
+    $('.price-list #items-price').each(function() {
+
+        discount += parseFloat($(this).html().replace(/,/g, ''));
+
+    });
+
+    $('#discountResult').html(Math.round(discount));
+
 
 }

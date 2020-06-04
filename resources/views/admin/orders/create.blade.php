@@ -82,7 +82,7 @@
             <div class="portlet-body">
                 <div class="table-scrollable">
                 {{-- <form action="{{ route('admin.orders.store', $client->id) }}" method="post"> --}}
-                    <form method="post">
+                    <form action="{{ route('admin.orders.store') }}"  method="post">
                         @csrf
                         @method('post')
                         @include('partials._errors')
@@ -108,15 +108,15 @@
                             </tbody>
                         </table>
                         <table class="table table-bordered table-hover">
-                            <thead>
+                            <thead class="price-list">
                                 <tr>
                                     <th>@lang('site.total')</th>
-                                    <th><span id="total-price">0</span></th>
+                                    <th><span id="items-price" data-discount="${discount}">0</span></th>
                                 </tr>
                                 <tr>
                                     <th>@lang('site.discount')</th>
                                     <th><input type="number" name="" class="form-control"
-                                            id="discount"></th>
+                                            id="discount" min="0" value="0"></th>
                                 </tr>
                                 <tr>
                                     <th>@lang('site.after_discount')</th>
@@ -125,6 +125,10 @@
                                 <tr>
                                     <th>@lang('site.amount_paid')</th>
                                     <th><input type="number" name="" class="form-control"></th>
+                                </tr>
+                                <tr>
+                                    <th>@lang('site.remaining_amount')</th>
+                                    <th><span id="remainingAmount">0</span></th>
                                 </tr>
                             </thead>
                         </table>

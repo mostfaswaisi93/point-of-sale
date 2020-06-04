@@ -59,13 +59,16 @@ class OrderController extends Controller
 
         $order->products()->attach($request->products);
 
+        $items_price = 0;
         $total_price = 0;
-        $items = 0;
-
+        $discount = 0;
+        $after_discount = 0;
         foreach ($request->products as $id => $quantity) {
 
             $product = Product::FindOrFail($id);
-            $items += round($product->sale_price * $quantity['quantity']);
+            $items_price += $product->sale_price * $quantity['quantity'];
+
+            
             $total_price += $product->sale_price * $quantity['quantity'];
 
             $product->update([
@@ -73,9 +76,13 @@ class OrderController extends Controller
             ]);
         }
 
+        $after_discount = $items_price ($items_price * $discount / 100);
+
+
         $order->update([
-            'items' => $items,
-            'total_price' => $total_price
+            'items_price' => $items_price,
+            'total_price' => $total_price,
+            'after_discount' => $after_discount
         ]);
     }
 

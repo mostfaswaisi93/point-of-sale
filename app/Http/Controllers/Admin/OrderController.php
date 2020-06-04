@@ -47,4 +47,20 @@ class OrderController extends Controller
         return view('admin.orders.create', compact('categories'))
             ->with('client', Client::get(['id', 'name']));
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'client_id' => 'required',
+            'products' => 'required|array',
+        ]);
+
+        dd($request->all());
+
+        $this->attach_order($request);
+
+
+        session()->flash('success', __('site.added_successfully'));
+        return redirect()->route('admin.orders.index');
+    }
 }

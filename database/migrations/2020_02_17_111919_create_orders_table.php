@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('client_id')->unsigned()->onDelete('cascade');
             $table->double('items_price', 8, 2)->nullable();
             $table->double('discount', 8, 2)->nullable();
-            $table->double('total_after_discount', 8, 2)->nullable();
+            $table->double('after_discount', 8, 2)->nullable();
             $table->double('amount_paid', 8, 2)->nullable();
             $table->double('remaining_amount', 8, 2)->nullable();
             $table->double('total_price', 8, 2)->nullable();
