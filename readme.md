@@ -1,1 +1,1 @@
-# POS
+# point of sale
