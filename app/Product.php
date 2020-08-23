@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 
 class Product extends Model
 {
-    use \Dimsav\Translatable\Translatable;
+    use Translatable;
 
     protected $guarded = ['id'];
     public $translatedAttributes = ['name', 'description'];

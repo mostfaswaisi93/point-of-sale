@@ -1,1 +1,1 @@
-# POS
+## Laravel - A Point Of Sale

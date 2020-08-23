@@ -74,6 +74,10 @@ return [
     | A fallback locale is the locale being used to return a translation
     | when the requested translation is not existing. To disable it
     | set it to false.
+    | If set to null it will loop through all configured locales until
+    | one existing is found or end of list reached. The locales are looped
+    | from top to bottom and for country based locales the simple one
+    | is used first. So "es" will be checked before "es_MX".
     |
     */
     'fallback_locale' => 'en',
@@ -123,4 +127,19 @@ return [
     |
      */
     'to_array_always_loads_translations' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Configure the default behavior of the rule factory
+    |--------------------------------------------------------------------------
+    | The default values used to control the behavior of the RuleFactory.
+    | Here you can set your own default format and delimiters for
+    | your whole app.
+     *
+     */
+    'rule_factory' => [
+        'format' => \Astrotomic\Translatable\Validation\RuleFactory::FORMAT_ARRAY,
+        'prefix' => '%',
+        'suffix' => '%',
+    ],
 ];
